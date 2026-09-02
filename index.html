@@ -85,7 +85,8 @@ nav.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--blue-
 
 main{max-width:1080px;margin:0 auto;padding:0 var(--pad) 3.5rem}
 .page{display:none}
-.page.on{display:block;animation:rise .3s ease both}
+.page.on{display:block}
+.page.on.enter{animation:rise .3s ease both}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.page.on{animation:none}}
 
@@ -806,7 +807,15 @@ var ROUTES={home:"Project Air Aware",problem:"The Problem · Project Air Aware",
 var tabs=[].slice.call(document.querySelectorAll("nav.tabs a"));
 function route(){var h=(location.hash||"").replace(/^#\/?/,"").split("?")[0];return ROUTES[h]?h:"home";}
 function show(r,scroll){
-  [].forEach.call(document.querySelectorAll(".page"),function(p){p.classList.toggle("on",p.id==="page-"+r);});
+  [].forEach.call(document.querySelectorAll(".page"),function(p){
+    p.classList.toggle("on",p.id==="page-"+r);
+    if(p.id!=="page-"+r) p.classList.remove("enter");
+  });
+  if(scroll && !REDUCED){
+    var cur=document.getElementById("page-"+r);
+    cur.classList.add("enter");
+    setTimeout(function(){cur.classList.remove("enter");},400);
+  }
   tabs.forEach(function(a){a.dataset.route===r?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current");});
   document.title=ROUTES[r];
   if(scroll) window.scrollTo({top:0,behavior:REDUCED?"auto":"smooth"});
