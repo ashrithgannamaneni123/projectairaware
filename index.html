@@ -337,7 +337,7 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
     <div class="airbox" id="airbox">
       <div class="stage">
         <canvas id="air" aria-hidden="true"></canvas>
-        <div class="hud"><span id="hud-state">Unfiltered room air</span><br><b id="hud-count">—</b> particles</div>
+        <div class="hud"><span id="hud-state">Unfiltered room air</span><br><b id="hud-count">170</b> particles</div>
         <div class="fanbar" aria-hidden="true"></div>
       </div>
       <div class="ctl">
@@ -817,9 +817,9 @@ addEventListener("hashchange",function(){show(route(),true);});
 
 /* --------------------------- headline stat band --------------------------- */
 function fillBand(){
-  requestAnimationFrame(function(){
+  setTimeout(function(){
     [].forEach.call(document.querySelectorAll(".cmp .rail i"),function(i){ i.style.width=i.dataset.w+"%"; });
-  });
+  },60);
 }
 
 /* -------------------------------- charts -------------------------------- */
@@ -838,7 +838,7 @@ function hideTip(){tip.classList.remove("on");}
 
 var built=false;
 function drawBars(){
-  if(built){ requestAnimationFrame(grow); return; }
+  if(built){ setTimeout(grow,60); return; }
   built=true;
   [].forEach.call(document.querySelectorAll(".plot"),function(plot){
     var d=DATA[plot.dataset.chart],max=parseFloat(plot.dataset.max),frag=document.createDocumentFragment();
@@ -877,7 +877,7 @@ function drawBars(){
     arow.appendChild(atrack);arow.appendChild(sp);frag.appendChild(arow);
     plot.appendChild(frag);
   });
-  requestAnimationFrame(grow);
+  setTimeout(grow,60);
 }
 function grow(){[].forEach.call(document.querySelectorAll(".mark"),function(b){b.style.width=b.dataset.w+"%";});}
 
