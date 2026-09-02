@@ -1,3 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12212E" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Project Air Aware is a student-led asthma and air quality awareness campaign from Mountain House High School in Mountain House, California — local data, DIY air filter kits, and a community survey.">
+<link rel="canonical" href="https://ashrithgannamaneni123.github.io/projectairaware/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Project Air Aware">
+<meta property="og:title" content="Project Air Aware">
+<meta property="og:description" content="Project Air Aware is a student-led asthma and air quality awareness campaign from Mountain House High School in Mountain House, California — local data, DIY air filter kits, and a community survey.">
+<meta property="og:url" content="https://ashrithgannamaneni123.github.io/projectairaware/">
+<meta property="og:image" content="https://ashrithgannamaneni123.github.io/projectairaware/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Project Air Aware — 28.4% of San Joaquin County children have been diagnosed with asthma, versus 17.1% statewide.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Project Air Aware">
+<meta name="twitter:description" content="Project Air Aware is a student-led asthma and air quality awareness campaign from Mountain House High School in Mountain House, California — local data, DIY air filter kits, and a community survey.">
+<meta name="twitter:image" content="https://ashrithgannamaneni123.github.io/projectairaware/og.png">
 <title>Project Air Aware</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -300,6 +325,8 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
   padding:1rem var(--pad) 1.9rem;font-family:"Archivo",sans-serif;font-size:.79rem;color:var(--muted);line-height:1.6}
 .disclaimer strong{color:var(--ink-2);font-weight:600}
 </style>
+</head>
+<body>
 
 <a class="skip" href="#main">Skip to content</a>
 
@@ -994,3 +1021,67 @@ function grow(){[].forEach.call(document.querySelectorAll(".mark"),function(b){b
 show(route(),false);
 })();
 </script>
+
+<!-- =====================================================================
+     VISITOR COUNTING  —  privacy-first, no cookies, no consent banner
+
+     Nothing is loaded and no data leaves anyone's browser until you put
+     your GoatCounter code on the line marked below.
+
+     To switch it on:
+       1. Sign up free at https://www.goatcounter.com/  (pick a code, e.g.
+          "projectairaware" — your dashboard is then at
+          https://projectairaware.goatcounter.com)
+       2. Put that code between the quotes below.
+       3. Upload this file to the repo again.
+
+     Once it is on you will see, per tab: Home, The Problem, Our Solutions,
+     Get Involved, Milestones, About Us, Resources — plus a "survey-click"
+     event every time someone taps through to the survey. That click count
+     is the number worth reporting, not raw visits.
+     ===================================================================== -->
+<script>window.AIRAWARE_GOATCOUNTER = "";</script>
+<script>
+(function(){
+  "use strict";
+  var CODE = window.AIRAWARE_GOATCOUNTER;
+  if(!CODE){ return; }                      /* not configured yet: load nothing */
+
+  var NAMES = {home:"Home", problem:"The Problem", solutions:"Our Solutions",
+               involved:"Get Involved", milestones:"Milestones",
+               about:"About Us", resources:"Resources"};
+
+  window.goatcounter = {no_onload:true};    /* we count routes ourselves */
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "//gc.zgo.at/count.js";
+  s.setAttribute("data-goatcounter", "https://" + CODE + ".goatcounter.com/count");
+
+  function gc(v){
+    if(window.goatcounter && typeof window.goatcounter.count === "function"){
+      window.goatcounter.count(v);
+    }
+  }
+  function page(){
+    var r = (location.hash||"").replace(/^#\/?/, "").split("?")[0];
+    if(!NAMES.hasOwnProperty(r)) r = "home";
+    gc({path:"/" + r, title:NAMES[r]});
+  }
+
+  s.onload = page;
+  addEventListener("hashchange", page);
+
+  document.addEventListener("click", function(e){
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if(!a) return;
+    var h = a.getAttribute("href") || "";
+    if(h.indexOf("project-airaware-survey") > -1 || h.indexOf("docs.google.com/forms") > -1){
+      gc({path:"survey-click", title:"Clicked through to the survey", event:true, no_session:true});
+    }
+  }, true);
+
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

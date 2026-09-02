@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12212E" media="(prefers-color-scheme: dark)">
+<title>Page not found · Project Air Aware</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400&display=swap">
+<style>
+:root{--ground:#F5F1EA;--ink:#16304C;--ink-2:#3D5568;--muted:#6E7F8C;
+      --blue:#2A6B92;--on-blue:#FDFCFA;--sky:#85CBE8;--clay:#CC6446;--line:#DED6C9}
+@media (prefers-color-scheme:dark){:root{--ground:#12212E;--ink:#EDF2F4;--ink-2:#C2D2DB;
+      --muted:#8FA3B0;--blue:#6FB3DA;--on-blue:#0C1A25;--line:#2E4557}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--ground);color:var(--ink);min-height:100vh;
+  font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.6;
+  display:flex;flex-direction:column}
+.rule{height:3px;background:linear-gradient(90deg,var(--sky),var(--sky) 22%,var(--blue) 55%,var(--clay) 88%,var(--clay))}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;
+  max-width:640px;margin:0 auto;padding:3rem clamp(1.15rem,5vw,2rem)}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:.9rem}
+h1{font-family:"Archivo",Arial,sans-serif;font-weight:700;font-size:clamp(1.8rem,6vw,2.5rem);
+  letter-spacing:-.03em;line-height:1.12;text-wrap:balance}
+p{color:var(--ink-2);margin-top:1rem;max-width:52ch}
+a.btn{display:inline-block;margin-top:1.8rem;font-family:"Archivo",Arial,sans-serif;
+  font-size:.9rem;font-weight:600;text-decoration:none;border-radius:8px;
+  padding:.7rem 1.15rem;background:var(--blue);color:var(--on-blue)}
+footer{border-top:1px solid var(--line);padding:1.2rem clamp(1.15rem,5vw,2rem);
+  font-family:"Archivo",Arial,sans-serif;font-size:.8rem;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<div class="rule"></div>
+<main>
+  <span class="eyebrow">404 · Page not found</span>
+  <h1>That page isn't here.</h1>
+  <p>The link may be mistyped, or it may point at something we've since moved. Everything lives on the main site — the data, the filter kits, and the survey.</p>
+  <a class="btn" href="./">Go to Project Air Aware</a>
+</main>
+<footer>Project Air Aware is a student-run public health awareness project, not a source of medical advice.</footer>
+</body>
+</html>
