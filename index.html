@@ -30,7 +30,7 @@
 <style>
 /* ============================================================
    PROJECT AIR AWARE
-   navy ink · steel blue = brand & baseline · clay = elevated / pollution
+   navy ink · steel blue = brand · gold = the elevated figure
    sage = prevention · sky + ice = air · cream ground
    Archivo (headings) / Newsreader (body) / IBM Plex Mono (readouts)
    ============================================================ */
@@ -39,21 +39,22 @@
   --ground:#F5F1EA; --surface:#FCFAF7; --surface-2:#E7EEF1;
   --ink:#16304C; --ink-2:#3D5568; --muted:#6E7F8C;
   --line:#DED6C9; --line-soft:#E9E2D7;
-  --blue:#2A6B92; --blue-deep:#1C4F70; --on-blue:#FDFCFA; --blue-chart:#2C7CB0;
+  --blue:#2A6B92; --blue-deep:#1C4F70; --on-blue:#FDFCFA;
   --sky:#85CBE8; --ice:#D8EBF0; --sage:#7CAB8C;
-  --clay:#B4512F; --clay-chart:#CC6446;
+  --chart-a:#1B6098;          /* San Joaquin County — the elevated figure */
+  --chart-b:#B0851F;          /* California — the baseline */
   --focus:#2A6B92;
   --shadow:0 1px 2px rgba(22,48,76,.05), 0 10px 28px -18px rgba(22,48,76,.30);
-  --measure:62ch; --pad:clamp(1.15rem,4vw,2.5rem); --radius:10px;
+  --measure:62ch; --pad:clamp(1.15rem,4vw,2.5rem); --radius:12px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --ground:#12212E; --surface:#1A2E3D; --surface-2:#24394A;
     --ink:#EDF2F4; --ink-2:#C2D2DB; --muted:#8FA3B0;
     --line:#2E4557; --line-soft:#223749;
-    --blue:#6FB3DA; --blue-deep:#8FC8E6; --on-blue:#0C1A25; --blue-chart:#3F95C9;
+    --blue:#6FB3DA; --blue-deep:#8FC8E6; --on-blue:#0C1A25;
     --sky:#85CBE8; --ice:#2A4256; --sage:#8FBFA0;
-    --clay:#E28C68; --clay-chart:#D26C48;
+    --chart-a:#4C9BD1; --chart-b:#B08A2C;
     --focus:#6FB3DA;
     --shadow:0 1px 2px rgba(0,0,0,.32), 0 12px 30px -20px rgba(0,0,0,.85);
   }
@@ -62,9 +63,9 @@
   --ground:#12212E; --surface:#1A2E3D; --surface-2:#24394A;
   --ink:#EDF2F4; --ink-2:#C2D2DB; --muted:#8FA3B0;
   --line:#2E4557; --line-soft:#223749;
-  --blue:#6FB3DA; --blue-deep:#8FC8E6; --on-blue:#0C1A25; --blue-chart:#3F95C9;
+  --blue:#6FB3DA; --blue-deep:#8FC8E6; --on-blue:#0C1A25;
   --sky:#85CBE8; --ice:#2A4256; --sage:#8FBFA0;
-  --clay:#E28C68; --clay-chart:#D26C48;
+  --chart-a:#4C9BD1; --chart-b:#B08A2C;
   --focus:#6FB3DA;
   --shadow:0 1px 2px rgba(0,0,0,.32), 0 12px 30px -20px rgba(0,0,0,.85);
 }
@@ -74,255 +75,299 @@ body{margin:0;background:var(--ground);color:var(--ink);
   font-family:"Newsreader",Georgia,serif;font-size:17.5px;line-height:1.62;-webkit-text-size-adjust:100%}
 @media (min-width:800px){body{font-size:18px}}
 h1,h2,h3,h4{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-weight:600;
-  letter-spacing:-.018em;text-wrap:balance;line-height:1.14;margin:0}
-.eyebrow,.fig,.tick,.pill,.when,.readout,.tagline,.k,.unit,.src,.n{
+  letter-spacing:-.018em;text-wrap:balance;line-height:1.15;margin:0}
+.eyebrow,.fig,.tick,.pill,.when,.k,.unit,.src,.n,.tagline,.val,.gap,.cap{
   font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
 a{color:var(--blue);text-underline-offset:3px}
 a:hover{color:var(--blue-deep)}
 :focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
 p{margin:0 0 1em}p:last-child{margin-bottom:0}
+img{max-width:100%;height:auto}
 
 .layer-rule{height:3px;border:0;margin:0;background:linear-gradient(90deg,
-  color-mix(in oklab,var(--sky) 50%,transparent),var(--sky) 22%,
-  var(--blue-chart) 55%,var(--clay-chart) 88%,color-mix(in oklab,var(--clay-chart) 35%,transparent))}
+  color-mix(in oklab,var(--sky) 50%,transparent),var(--sky) 25%,
+  var(--blue) 60%,var(--chart-b) 90%,color-mix(in oklab,var(--chart-b) 35%,transparent))}
 
 /* ------------------------------- chrome ------------------------------- */
 .skip{position:absolute;left:-9999px;background:var(--surface);color:var(--ink);padding:.6rem 1rem;z-index:99}
 .skip:focus{left:.5rem;top:.5rem}
 header.site{position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line-soft);
-  background:color-mix(in oklab,var(--ground) 88%,transparent);backdrop-filter:saturate(150%) blur(9px)}
-.topbar{max-width:1080px;margin:0 auto;padding:.8rem var(--pad) .5rem;
-  display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem 1rem}
-.wordmark{display:flex;align-items:center;gap:.55rem;text-decoration:none;color:var(--ink);
+  background:color-mix(in oklab,var(--ground) 90%,transparent);backdrop-filter:saturate(150%) blur(9px)}
+.topbar{max-width:1120px;margin:0 auto;padding:.7rem var(--pad) .45rem;
+  display:flex;flex-wrap:wrap;align-items:center;gap:.35rem 1rem}
+.wordmark{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--ink);
   font-family:"Archivo",sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.02em}
-.wordmark .dot{width:12px;height:12px;border-radius:50%;flex:none;
-  background:radial-gradient(circle at 32% 30%,var(--sky),var(--blue-chart) 70%);
-  box-shadow:0 0 0 3px color-mix(in oklab,var(--blue-chart) 18%,transparent)}
+.wordmark img{width:30px;height:30px;border-radius:50%;display:block}
 .tagline{font-size:.65rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-left:auto}
 @media (max-width:640px){.tagline{display:none}}
-nav.tabs{max-width:1080px;margin:0 auto;padding:0 var(--pad);display:flex;gap:.1rem;overflow-x:auto;scrollbar-width:none}
+nav.tabs{max-width:1120px;margin:0 auto;padding:0 var(--pad);display:flex;gap:.1rem;overflow-x:auto;scrollbar-width:none}
 nav.tabs::-webkit-scrollbar{display:none}
-nav.tabs a{flex:none;font-family:"Archivo",sans-serif;font-size:.84rem;font-weight:500;color:var(--muted);
-  text-decoration:none;padding:.65rem .7rem .55rem;border-bottom:2.5px solid transparent;white-space:nowrap;
+nav.tabs a{flex:none;font-family:"Archivo",sans-serif;font-size:.85rem;font-weight:500;color:var(--muted);
+  text-decoration:none;padding:.6rem .72rem .5rem;border-bottom:2.5px solid transparent;white-space:nowrap;
   transition:color .15s,border-color .15s}
 nav.tabs a:hover{color:var(--ink)}
-nav.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--blue-chart);font-weight:600}
+nav.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--blue);font-weight:600}
 
-main{max-width:1080px;margin:0 auto;padding:0 var(--pad) 3.5rem}
+main{max-width:1120px;margin:0 auto;padding:0 var(--pad) 3.5rem}
 .page{display:none}
 .page.on{display:block}
 .page.on.enter{animation:rise .3s ease both}
 @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.page.on{animation:none}}
+@media (prefers-reduced-motion:reduce){.page.on.enter{animation:none}}
 
-.phead{padding:2.2rem 0 1.3rem;border-bottom:1px solid var(--line-soft);margin-bottom:1.9rem}
-.eyebrow{display:block;font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);margin-bottom:.8rem}
-.phead h1{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:700}
-.phead .dek{max-width:var(--measure);margin-top:.8rem;color:var(--ink-2);font-size:1.05em}
+.phead{padding:2.1rem 0 1.2rem;border-bottom:1px solid var(--line-soft);margin-bottom:1.8rem}
+.eyebrow{display:block;font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--blue);margin-bottom:.75rem}
+.phead h1{font-size:clamp(1.75rem,4.6vw,2.4rem);font-weight:700}
+.phead .dek{max-width:var(--measure);margin-top:.75rem;color:var(--ink-2);font-size:1.04em}
 .prose{max-width:var(--measure)}
-section.block{margin:2.5rem 0 0}
-section.block>h2{font-size:clamp(1.12rem,3vw,1.38rem);padding-bottom:.5rem;margin-bottom:1.05rem;border-bottom:1px solid var(--line-soft)}
+section.block{margin:2.4rem 0 0}
+section.block>h2{font-size:clamp(1.1rem,2.8vw,1.32rem);padding-bottom:.5rem;margin-bottom:1rem;border-bottom:1px solid var(--line-soft)}
 .note{font-size:.88em;color:var(--muted);max-width:var(--measure)}
 
+/* --------------------- points: organised short blocks --------------------- */
+.points{list-style:none;padding:0;margin:1.1rem 0 0;display:grid;gap:.8rem}
+@media (min-width:760px){.points.three{grid-template-columns:repeat(3,1fr)}
+                         .points.two{grid-template-columns:repeat(2,1fr)}}
+.points li{padding-left:.9rem;border-left:2px solid var(--line)}
+.points li.hi{border-left-color:var(--chart-a)}
+.points b{display:block;font-family:"Archivo",sans-serif;font-weight:600;font-size:.92rem;
+  color:var(--ink);margin-bottom:.18rem}
+.points span{display:block;font-family:"Archivo",sans-serif;font-size:.87rem;color:var(--ink-2);line-height:1.5}
+
 /* -------------------------------- hero -------------------------------- */
-.hero{display:grid;gap:clamp(1.6rem,4vw,2.8rem);grid-template-columns:1fr;padding:2.4rem 0 1.6rem;align-items:center}
-@media (min-width:900px){.hero{grid-template-columns:1.02fr .98fr}}
-.hero h1{font-size:clamp(2rem,5.8vw,3.15rem);font-weight:700;letter-spacing:-.03em}
-.hero .lede{font-size:1.08em;color:var(--ink-2);max-width:40ch;margin-top:1rem}
-.cta-row{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.5rem}
+.hero{display:grid;gap:clamp(1.4rem,4vw,3rem);grid-template-columns:1fr;padding:2.2rem 0 1.4rem;align-items:center}
+@media (min-width:860px){.hero{grid-template-columns:1.15fr .85fr}}
+.hero h1{font-size:clamp(1.95rem,5.4vw,2.95rem);font-weight:700;letter-spacing:-.03em}
+.hero .lede{font-size:1.06em;color:var(--ink-2);max-width:42ch;margin-top:.95rem}
+.hero-logo{justify-self:center;max-width:240px;width:100%}
+@media (min-width:860px){.hero-logo{max-width:330px}}
+.hero-logo img{border-radius:50%;box-shadow:var(--shadow);display:block;width:100%}
+.cta-row{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.4rem}
 .btn{font-family:"Archivo",sans-serif;font-size:.89rem;font-weight:600;text-decoration:none;
   border-radius:8px;padding:.7rem 1.1rem;display:inline-flex;align-items:center;gap:.4rem;
-  border:1.5px solid transparent;transition:transform .12s,background .15s}
+  border:1.5px solid transparent;transition:transform .12s,background .15s;cursor:pointer}
 .btn:active{transform:translateY(1px)}
 .btn-primary{background:var(--blue);color:var(--on-blue);border-color:var(--blue)}
 .btn-primary:hover{background:var(--blue-deep);color:var(--on-blue)}
-.btn-ghost{border-color:var(--line);color:var(--ink)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
 .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
 
-/* --------------------- the air box (interactive demo) --------------------- */
-.airbox{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);
-  box-shadow:var(--shadow);overflow:hidden}
-.airbox .stage{position:relative;aspect-ratio:4/3;min-height:230px;background:
-  linear-gradient(180deg,color-mix(in oklab,var(--sky) 12%,transparent),transparent 62%)}
-.airbox canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.airbox .hud{position:absolute;left:.85rem;top:.8rem;font-family:"IBM Plex Mono",monospace;
-  font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.7;pointer-events:none}
-.airbox .hud b{color:var(--ink);font-weight:500;font-size:.78rem;letter-spacing:0}
-.airbox .fanbar{position:absolute;left:8%;right:8%;bottom:6%;height:12px;border-radius:3px;
-  background:var(--line);transition:background .3s,box-shadow .3s}
-.airbox.on .fanbar{background:var(--blue-chart);box-shadow:0 0 0 4px color-mix(in oklab,var(--blue-chart) 16%,transparent)}
-.airbox .ctl{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;border-top:1px solid var(--line-soft);flex-wrap:wrap}
-.switch{display:inline-flex;align-items:center;gap:.6rem;cursor:pointer;font-family:"Archivo",sans-serif;
-  font-size:.86rem;font-weight:600;color:var(--ink);background:none;border:0;padding:0}
-.switch .track2{width:44px;height:25px;border-radius:99px;background:var(--line);position:relative;transition:background .25s;flex:none}
-.switch .knob{position:absolute;top:3px;left:3px;width:19px;height:19px;border-radius:50%;background:var(--surface);
-  box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .25s}
-.airbox.on .switch .track2{background:var(--blue-chart)}
-.airbox.on .switch .knob{transform:translateX(19px)}
-.airbox .cap{font-size:.78rem;color:var(--muted);font-family:"Archivo",sans-serif;margin-left:auto}
-
 /* ------------------------- headline stat band ------------------------- */
-.band{background:color-mix(in oklab,var(--ice) 45%,var(--surface));border:1px solid var(--line-soft);border-radius:var(--radius);
-  padding:clamp(1.2rem,3.4vw,1.8rem);margin-top:.6rem}
-.band .cap{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--muted)}
-.cmp{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.1rem 0 .8rem}
-.cmp .fig{font-size:clamp(2.2rem,7.5vw,3.2rem);font-weight:600;line-height:1;letter-spacing:-.045em;display:block}
-.cmp .local .fig{color:var(--clay)}
+.band{background:color-mix(in oklab,var(--ice) 45%,var(--surface));
+  border:1px solid var(--line-soft);border-radius:var(--radius);padding:clamp(1.1rem,3vw,1.7rem);margin-top:.5rem}
+.band .cap{font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin:1rem 0 .7rem}
+.cmp .fig{font-size:clamp(2rem,7vw,3rem);font-weight:600;line-height:1;letter-spacing:-.045em;display:block}
+.cmp .local .fig{color:var(--chart-a)}
 .cmp .state .fig{color:var(--muted)}
-.cmp .who{font-family:"Archivo",sans-serif;font-weight:600;font-size:.85rem;margin-top:.45rem}
-.cmp .rail{height:9px;border-radius:4px;margin-top:.6rem;background:color-mix(in oklab,var(--ink) 12%,transparent);overflow:hidden}
+.cmp .who{font-family:"Archivo",sans-serif;font-weight:600;font-size:.85rem;margin-top:.4rem}
+.cmp .rail{height:9px;border-radius:4px;margin-top:.55rem;background:color-mix(in oklab,var(--ink) 12%,transparent);overflow:hidden}
 .cmp .rail i{display:block;height:100%;border-radius:4px;width:0;transition:width 1.1s cubic-bezier(.2,.8,.25,1)}
-.cmp .local .rail i{background:var(--clay-chart)}
+.cmp .local .rail i{background:var(--chart-a)}
 .cmp .state .rail i{background:var(--muted);opacity:.5}
-.cmp .what{font-family:"Archivo",sans-serif;font-size:.78rem;color:var(--muted);margin-top:.5rem}
-.band .src{font-family:"IBM Plex Mono",monospace;font-size:.65rem;color:var(--muted);
-  border-top:1px solid var(--line-soft);padding-top:.7rem;line-height:1.6}
+.cmp .what{font-family:"Archivo",sans-serif;font-size:.78rem;color:var(--muted);margin-top:.45rem}
+.band .src{font-size:.65rem;color:var(--muted);border-top:1px solid var(--line-soft);
+  padding-top:.65rem;line-height:1.6;margin-top:0}
 
 /* ------------------------------ stat tiles ------------------------------ */
-.stats{display:grid;gap:.85rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:1.3rem}
+.stats{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));margin-top:1.2rem}
 .tile{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);
-  padding:1.05rem 1.1rem;display:flex;flex-direction:column;gap:.35rem}
-.tile .fig{font-size:1.85rem;font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--ink)}
-.tile.up .fig{color:var(--clay)}
+  padding:1rem 1.05rem;display:flex;flex-direction:column;gap:.32rem}
+.tile .fig{font-size:1.8rem;font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--ink)}
 .tile .lab{font-family:"Archivo",sans-serif;font-size:.85rem;font-weight:600;line-height:1.35}
-.tile .sub{font-family:"Archivo",sans-serif;font-size:.8rem;color:var(--muted);line-height:1.45;margin-top:auto}
+.tile .sub{font-family:"Archivo",sans-serif;font-size:.79rem;color:var(--muted);line-height:1.45;margin-top:auto}
 
-/* ------------------------------- charts -------------------------------- */
+/* ------------------------- chart: dumbbell rows ------------------------- */
 .chart{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);
-  padding:1.15rem clamp(1rem,3vw,1.45rem) 1rem;margin-top:1.1rem}
-.chart h3{font-family:"Archivo",sans-serif;font-size:.98rem;font-weight:600}
-.chart .unit{display:block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
-.legend{display:flex;gap:1rem;flex-wrap:wrap;margin:.8rem 0 1.05rem}
+  padding:1.1rem clamp(1rem,3vw,1.5rem) 1rem;margin-top:1.1rem}
+.chart-head{display:flex;flex-wrap:wrap;gap:.8rem 1rem;align-items:flex-end;justify-content:space-between}
+.chart h3{font-family:"Archivo",sans-serif;font-size:1rem;font-weight:600}
+.chart .unit{display:block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.28rem}
+.seg{display:inline-flex;background:var(--surface-2);border-radius:99px;padding:3px;gap:2px}
+.seg button{font-family:"Archivo",sans-serif;font-size:.79rem;font-weight:600;border:0;cursor:pointer;
+  padding:.42rem .8rem;border-radius:99px;background:transparent;color:var(--ink-2);transition:background .18s,color .18s}
+.seg button[aria-selected="true"]{background:var(--blue);color:var(--on-blue)}
+.legend{display:flex;gap:1rem;flex-wrap:wrap;margin:.9rem 0 .3rem}
 .legend span{display:inline-flex;align-items:center;gap:.4rem;font-family:"Archivo",sans-serif;font-size:.79rem;color:var(--ink-2)}
-.swatch{width:11px;height:11px;border-radius:3px;flex:none}
-.sw-local{background:var(--clay-chart)}.sw-state{background:var(--blue-chart)}
-.group{margin-bottom:1rem}
-.group-lab{font-family:"Archivo",sans-serif;font-size:.81rem;font-weight:600;margin-bottom:.38rem}
-.brow{display:flex;align-items:center;gap:.55rem;margin-bottom:2px}
-.track{flex:1;min-width:0;height:19px;position:relative}
-.mark{height:19px;border-radius:0 4px 4px 0;border:0;padding:0;display:block;margin:0;width:0;
-  transition:width .9s cubic-bezier(.2,.8,.25,1),filter .12s;cursor:default}
-.mark:hover,.mark:focus-visible{filter:brightness(1.09)}
-.mark.local{background:var(--clay-chart)}.mark.state{background:var(--blue-chart)}
-.val{font-family:"IBM Plex Mono",monospace;font-size:.77rem;color:var(--ink-2);flex:none;width:5.6ch}
-.axis{position:relative;height:1.8rem;margin-top:.5rem;border-top:1px solid var(--line)}
-.tick{position:absolute;top:.32rem;font-size:.65rem;color:var(--muted);transform:translateX(-50%);white-space:nowrap}
-.tick::before{content:"";position:absolute;top:-.32rem;left:50%;width:1px;height:.26rem;background:var(--line)}
+.swatch{width:11px;height:11px;border-radius:50%;flex:none;display:inline-block}
+.sw-a{background:var(--chart-a)}.sw-b{background:var(--chart-b)}
+
+.dgroup{margin-top:1.15rem}
+.dgroup .glab{font-family:"Archivo",sans-serif;font-size:.85rem;font-weight:600;margin-bottom:.5rem}
+.dtrack{position:relative;height:30px}
+.dtrack .base{position:absolute;left:0;right:0;top:14px;height:2px;background:var(--line-soft)}
+.dbar{position:absolute;top:12px;height:6px;border-radius:3px;background:var(--chart-a);opacity:.3;
+  left:0;width:0;transition:left .8s cubic-bezier(.2,.8,.25,1),width .8s cubic-bezier(.2,.8,.25,1)}
+.dot{position:absolute;top:7px;width:16px;height:16px;border-radius:50%;border:2.5px solid var(--surface);
+  margin-left:-8px;padding:0;cursor:pointer;left:0;transition:left .8s cubic-bezier(.2,.8,.25,1),transform .14s}
+.dot:hover,.dot:focus-visible{transform:scale(1.25)}
+.dot.a{background:var(--chart-a);z-index:2}
+.dot.b{background:var(--chart-b);z-index:1}
+.dcap{display:flex;flex-wrap:wrap;gap:.4rem .95rem;align-items:center;margin-top:.4rem}
+.dcap em{font-style:normal;display:inline-flex;align-items:center;gap:.38rem;
+  font-family:"Archivo",sans-serif;font-size:.81rem;color:var(--ink-2)}
+.dcap .val{font-weight:600;color:var(--ink);font-size:.83rem}
+.gap{margin-left:auto;font-size:.74rem;color:var(--chart-a);font-weight:600;
+  background:color-mix(in oklab,var(--chart-a) 13%,transparent);padding:.18rem .55rem;border-radius:99px}
+.axis{position:relative;height:1.7rem;margin-top:1.1rem;border-top:1px solid var(--line)}
+.tick{position:absolute;top:.3rem;font-size:.65rem;color:var(--muted);transform:translateX(-50%);white-space:nowrap}
+.tick::before{content:"";position:absolute;top:-.3rem;left:50%;width:1px;height:.26rem;background:var(--line)}
 #tip{position:fixed;z-index:80;pointer-events:none;opacity:0;background:var(--ink);color:var(--ground);
   font-family:"Archivo",sans-serif;font-size:.77rem;line-height:1.4;padding:.42rem .58rem;border-radius:6px;
-  max-width:230px;transition:opacity .1s;box-shadow:var(--shadow)}
+  max-width:240px;transition:opacity .1s;box-shadow:var(--shadow)}
 #tip.on{opacity:1}
-.tbl-toggle{background:none;border:0;padding:0;margin-top:.85rem;cursor:pointer;
+.tbl-toggle{background:none;border:0;padding:0;margin-top:.9rem;cursor:pointer;
   font-family:"Archivo",sans-serif;font-size:.77rem;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
-table.data{border-collapse:collapse;width:100%;margin-top:.75rem;font-size:.84rem}
+table.data{border-collapse:collapse;width:100%;margin-top:.7rem;font-size:.84rem}
 table.data th,table.data td{border-bottom:1px solid var(--line-soft);padding:.4rem .5rem;text-align:left}
 table.data th{font-family:"Archivo",sans-serif;font-weight:600;font-size:.77rem;color:var(--muted)}
-table.data td.n{text-align:right}
+table.data td.n{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
 
-/* --------------------------- valley figure --------------------------- */
-.figure{margin:1.4rem 0 0}
+/* --------------------------- split + figure --------------------------- */
+.split{display:grid;gap:1.3rem;grid-template-columns:1fr;align-items:center;margin-top:1.2rem}
+@media (min-width:880px){.split{grid-template-columns:1.12fr .88fr}}
+.figure{margin:0}
 .figure svg{width:100%;height:auto;display:block;border-radius:var(--radius);
   background:var(--surface);border:1px solid var(--line-soft)}
-figcaption{font-family:"Archivo",sans-serif;font-size:.81rem;color:var(--muted);margin-top:.55rem;max-width:var(--measure);line-height:1.5}
+figcaption{font-family:"Archivo",sans-serif;font-size:.8rem;color:var(--muted);margin-top:.5rem;line-height:1.5}
 @keyframes drift{from{transform:translateX(-14px)}to{transform:translateX(14px)}}
 .haze-move{animation:drift 11s ease-in-out infinite alternate}
 @media (prefers-reduced-motion:reduce){.haze-move{animation:none}}
 
 /* ------------------------------- phases -------------------------------- */
-.phases{display:grid;gap:.95rem;grid-template-columns:1fr;margin-top:1.3rem}
-@media (min-width:820px){.phases{grid-template-columns:repeat(3,1fr)}}
-.phase{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:1.15rem}
+.phases{display:grid;gap:.9rem;grid-template-columns:1fr;margin-top:1.2rem}
+@media (min-width:760px){.phases{grid-template-columns:repeat(2,1fr)}}
+.phase{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:1.1rem}
 .phase .n{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
   color:var(--muted);display:flex;align-items:center;gap:.5rem}
 .phase .n::after{content:"";height:1px;flex:1;background:var(--line-soft)}
-.phase h3{font-size:1.08rem;margin:.65rem 0 .45rem}
+.phase h3{font-size:1.05rem;margin:.6rem 0 .4rem}
 .phase p{font-family:"Archivo",sans-serif;font-size:.87rem;color:var(--ink-2);line-height:1.5}
 .phase.p1{border-top:3px solid var(--sky)}
-.phase.p2{border-top:3px solid var(--blue-chart)}
 .phase.p3{border-top:3px solid var(--sage)}
 
-/* --------------------------- kit explorer --------------------------- */
-.kit{display:grid;gap:1.2rem;grid-template-columns:1fr;margin-top:1.3rem}
-@media (min-width:840px){.kit{grid-template-columns:1.05fr .95fr;align-items:start}}
-.kit-svg{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:.6rem}
-.kit-svg svg{width:100%;height:auto;display:block}
-.hot{cursor:pointer}
-.hot rect,.hot circle,.hot path{transition:opacity .18s}
-.hot:hover .hl,.hot[aria-pressed="true"] .hl{opacity:1}
-.hl{opacity:0}
-.kit-info{background:var(--surface);border:1px solid var(--line-soft);border-left:3px solid var(--blue-chart);
-  border-radius:var(--radius);padding:1.1rem 1.2rem;min-height:170px}
-.kit-info .k{font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
-.kit-info h3{font-size:1.05rem;margin:.5rem 0 .5rem}
-.kit-info p{font-size:.95rem;color:var(--ink-2)}
-.partbtns{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.8rem}
-.partbtn{font-family:"Archivo",sans-serif;font-size:.77rem;font-weight:600;padding:.4rem .7rem;border-radius:99px;
-  border:1px solid var(--line);background:transparent;color:var(--ink-2);cursor:pointer;transition:all .15s}
-.partbtn:hover{border-color:var(--blue)}
-.partbtn[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
-
-.panel{border:1px solid var(--line);border-left:3px solid var(--clay-chart);border-radius:var(--radius);
-  padding:1.05rem 1.15rem;margin-top:1.3rem;background:var(--surface);max-width:var(--measure)}
-.panel h3{font-size:.98rem;margin-bottom:.5rem}
-.panel p{font-size:.93rem}
-.panel .src{font-size:.66rem;color:var(--muted);margin-top:.7rem;line-height:1.6}
-
-/* ------------------------------ timeline ------------------------------- */
-.timeline{list-style:none;padding:0;margin:1.4rem 0 0;position:relative}
-.timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.timeline li{position:relative;padding:0 0 1.45rem 2.05rem}
-.timeline li:last-child{padding-bottom:0}
-.timeline li::before{content:"";position:absolute;left:0;top:.35rem;width:16px;height:16px;border-radius:50%;
-  background:var(--ground);border:2.5px solid var(--line)}
-.timeline li.done::before{background:var(--blue-chart);border-color:var(--blue-chart)}
-.timeline li.now::before{border-color:var(--clay-chart);box-shadow:0 0 0 4px color-mix(in oklab,var(--clay-chart) 18%,transparent)}
-.timeline .when{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.22rem}
-.timeline h3{font-size:.98rem;margin-bottom:.25rem}
-.timeline p{font-family:"Archivo",sans-serif;font-size:.87rem;color:var(--ink-2);max-width:var(--measure);line-height:1.5}
+/* ------------------------------ gallery ------------------------------- */
+/* =====================================================================
+   MILESTONE GALLERY — how to add a photo
+   Find the MILESTONES list in the script at the bottom of this file and
+   set  photo: "photos/your-file.jpg"  on the entry. Put the image file in
+   a "photos" folder in the repo. Leave photo: "" and the card shows a
+   neutral placeholder instead.
+   ===================================================================== */
+.gal{display:grid;gap:.95rem;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));margin-top:1.2rem}
+.gcard{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column}
+.shot{aspect-ratio:4/3;width:100%;display:flex;align-items:center;justify-content:center;
+  background:color-mix(in oklab,var(--ice) 40%,var(--surface-2));
+  border-bottom:1px solid var(--line-soft);object-fit:cover}
+div.shot{border-bottom:1px dashed var(--line)}
+div.shot::after{content:"PHOTO TO COME";font-family:"IBM Plex Mono",monospace;font-size:.62rem;
+  letter-spacing:.14em;color:var(--muted)}
+.gbody{padding:.85rem .95rem 1rem;display:flex;flex-direction:column;gap:.32rem;flex:1}
+.gcard h3{font-size:.96rem}
+.gcard p{font-family:"Archivo",sans-serif;font-size:.83rem;color:var(--ink-2);line-height:1.45}
+.gwhen{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-top:auto;padding-top:.4rem}
 .pill{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.1em;
-  text-transform:uppercase;padding:.14rem .45rem;border-radius:4px;margin-left:.45rem;vertical-align:.12em;
-  border:1px solid var(--line);color:var(--muted)}
+  text-transform:uppercase;padding:.14rem .45rem;border-radius:4px;border:1px solid var(--line);
+  color:var(--muted);align-self:flex-start}
 .pill.done{color:var(--blue);border-color:color-mix(in oklab,var(--blue) 45%,transparent)}
+.pill.now{color:var(--chart-b);border-color:color-mix(in oklab,var(--chart-b) 50%,transparent)}
 
-/* --------------------------- team / cards --------------------------- */
-.team{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));margin-top:1.2rem}
-.member{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:.95rem 1rem}
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(228px,258px);gap:.9rem;
+  overflow-x:auto;padding:.2rem .2rem 1rem;margin-top:.9rem;
+  scroll-snap-type:x mandatory;scrollbar-width:thin}
+.strip>*{scroll-snap-align:start}
+.strip::-webkit-scrollbar{height:8px}
+.strip::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+.striphint{font-family:"Archivo",sans-serif;font-size:.8rem;color:var(--muted);margin:0}
+
+/* ------------------- symptoms: the top of Resources ------------------- */
+.alert{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--chart-b);
+  border-radius:var(--radius);padding:clamp(1.1rem,3vw,1.6rem);margin-top:.4rem}
+.alert h2{font-size:clamp(1.15rem,3vw,1.45rem);margin-bottom:.35rem}
+.alert .lead{font-family:"Archivo",sans-serif;font-size:.92rem;color:var(--ink-2);max-width:58ch;margin:0}
+.symp{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));margin:1.15rem 0}
+.sy{background:color-mix(in oklab,var(--ice) 40%,var(--surface));border:1px solid var(--line-soft);
+  border-radius:10px;padding:.85rem .9rem;display:flex;flex-direction:column;gap:.5rem}
+.sy svg{width:28px;height:28px;stroke:var(--blue);fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.sy b{font-family:"Archivo",sans-serif;font-size:.87rem;font-weight:600}
+.doact{display:grid;gap:.7rem}
+@media (min-width:700px){.doact{grid-template-columns:1fr 1fr}}
+.doact div{border-left:3px solid var(--blue);padding:.6rem .85rem;
+  background:color-mix(in oklab,var(--blue) 7%,transparent);border-radius:0 8px 8px 0}
+.doact div.emg{border-left-color:var(--chart-b);background:color-mix(in oklab,var(--chart-b) 10%,transparent)}
+.doact b{display:block;font-family:"Archivo",sans-serif;font-size:.87rem;margin-bottom:.15rem}
+.doact span{font-family:"Archivo",sans-serif;font-size:.85rem;color:var(--ink-2);line-height:1.45}
+.src{font-family:"IBM Plex Mono",monospace;font-size:.65rem;color:var(--muted);line-height:1.6;
+  margin-top:1rem;padding-top:.7rem;border-top:1px solid var(--line-soft)}
+
+/* ------------------------------- AQI scale ------------------------------- */
+.aqi{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);
+  padding:1.1rem clamp(1rem,3vw,1.4rem) 1.2rem;margin-top:1.1rem}
+.aqiscale{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.aqiscale button{border:0;padding:0;cursor:pointer;background:none;display:block}
+.aqiscale .bar{display:block;height:34px;border-radius:5px;transition:transform .16s,box-shadow .16s}
+.aqiscale button[aria-selected="true"] .bar{transform:scaleY(1.3);box-shadow:var(--shadow)}
+.aqiscale .rng{display:block;font-family:"IBM Plex Mono",monospace;font-size:.6rem;color:var(--muted);margin-top:.45rem}
+.aqiout{margin-top:1rem;padding:.9rem 1rem;border-radius:10px;background:var(--surface-2);
+  display:flex;gap:.8rem;align-items:flex-start;min-height:82px}
+.aqiout .chip{width:14px;height:14px;border-radius:4px;flex:none;margin-top:.28rem}
+.aqiout b{display:block;font-family:"Archivo",sans-serif;font-size:.95rem;margin-bottom:.18rem}
+.aqiout span.d{display:block;font-family:"Archivo",sans-serif;font-size:.86rem;color:var(--ink-2);line-height:1.5}
+
+/* -------------------------- mission / team / cards -------------------------- */
+.mission{background:color-mix(in oklab,var(--ice) 45%,var(--surface));border:1px solid var(--line-soft);
+  border-radius:var(--radius);padding:clamp(1.2rem,3.5vw,1.9rem);margin-top:.4rem}
+.mission .cap{display:block;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:.7rem}
+.mission p{font-size:clamp(1.15rem,3vw,1.5rem);line-height:1.4;max-width:38ch;margin:0;color:var(--ink)}
+.team{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));margin-top:1.1rem}
+.member{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);padding:.9rem 1rem}
 .member .name{font-family:"Archivo",sans-serif;font-weight:600;font-size:1rem}
-.member .role{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-top:.28rem}
-.contact{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));margin-top:1.2rem}
+.member .role{font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+.contact{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:1.1rem}
 .card{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);
-  padding:1rem 1.05rem;text-decoration:none;color:var(--ink);display:block;transition:border-color .15s}
+  padding:.95rem 1rem;text-decoration:none;color:var(--ink);display:block;transition:border-color .15s}
 a.card:hover{border-color:var(--blue)}
-.card .k{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.card .v{font-family:"Archivo",sans-serif;font-weight:600;font-size:.98rem;margin-top:.3rem;word-break:break-word}
-
-.links{list-style:none;padding:0;margin:1.1rem 0 0;display:grid;gap:.65rem}
-.links li{border-left:2px solid var(--line);padding:.1rem 0 .1rem .9rem}
-.links a{font-family:"Archivo",sans-serif;font-weight:600;font-size:.96rem;text-decoration:none}
+.card .k{display:block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.card .v{display:block;font-family:"Archivo",sans-serif;font-weight:600;font-size:.97rem;margin-top:.28rem;word-break:break-word}
+.links{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.65rem}
+@media (min-width:760px){.links.two{grid-template-columns:1fr 1fr}}
+.links li{border-left:2px solid var(--line);padding:.1rem 0 .1rem .85rem}
+.links a{font-family:"Archivo",sans-serif;font-weight:600;font-size:.95rem;text-decoration:none}
 .links a:hover{text-decoration:underline}
-.links .d{display:block;font-family:"Archivo",sans-serif;font-size:.85rem;color:var(--ink-2);margin-top:.12rem;line-height:1.45}
-
-.faq{margin-top:1.1rem;max-width:var(--measure)}
-.faq details{border-bottom:1px solid var(--line-soft);padding:.8rem 0}
-.faq summary{cursor:pointer;font-family:"Archivo",sans-serif;font-weight:600;font-size:.95rem;
+.links .d{display:block;font-family:"Archivo",sans-serif;font-size:.84rem;color:var(--ink-2);margin-top:.12rem;line-height:1.45}
+.faq{margin-top:1rem;max-width:var(--measure)}
+.faq details{border-bottom:1px solid var(--line-soft);padding:.75rem 0}
+.faq summary{cursor:pointer;font-family:"Archivo",sans-serif;font-weight:600;font-size:.94rem;
   list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:start}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";color:var(--blue);font-family:"IBM Plex Mono",monospace;flex:none}
 .faq details[open] summary::after{content:"–"}
-.faq details p{margin-top:.6rem;font-size:.93rem;color:var(--ink-2)}
+.faq details p{margin-top:.55rem;font-size:.92rem;color:var(--ink-2)}
+
+.joinsplit{display:grid;gap:1.4rem;grid-template-columns:1fr;align-items:center;margin-top:.4rem}
+@media (min-width:820px){.joinsplit{grid-template-columns:.75fr 1.25fr}}
+.joinlogo{justify-self:center;max-width:250px;width:100%}
+.joinlogo img{border-radius:50%;box-shadow:var(--shadow);display:block;width:100%}
+.joinsplit h2{font-size:1.2rem;margin-bottom:.5rem}
 
 /* -------------------------------- footer -------------------------------- */
 footer.site{border-top:1px solid var(--line-soft);background:var(--surface);margin-top:1rem}
-.fwrap{max-width:1080px;margin:0 auto;padding:2.1rem var(--pad) 2.3rem;display:grid;gap:1.5rem}
+.fwrap{max-width:1120px;margin:0 auto;padding:2rem var(--pad) 2.2rem;display:grid;gap:1.5rem}
 @media (min-width:760px){.fwrap{grid-template-columns:1.3fr 1fr 1fr}}
 .fwrap h4{font-family:"IBM Plex Mono",monospace;font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--muted);font-weight:500;margin-bottom:.65rem}
-.fwrap ul{list-style:none;padding:0;margin:0;display:grid;gap:.38rem;font-family:"Archivo",sans-serif;font-size:.88rem}
+  color:var(--muted);font-weight:500;margin-bottom:.6rem}
+.fwrap ul{list-style:none;padding:0;margin:0;display:grid;gap:.35rem;font-family:"Archivo",sans-serif;font-size:.87rem}
 .fwrap a{text-decoration:none}.fwrap a:hover{text-decoration:underline}
-.fwrap p{font-family:"Archivo",sans-serif;font-size:.87rem;color:var(--ink-2);max-width:36ch}
-.disclaimer{border-top:1px solid var(--line-soft);max-width:1080px;margin:0 auto;
-  padding:1rem var(--pad) 1.9rem;font-family:"Archivo",sans-serif;font-size:.79rem;color:var(--muted);line-height:1.6}
+.fwrap p{font-family:"Archivo",sans-serif;font-size:.86rem;color:var(--ink-2);max-width:36ch}
+.flogo{display:flex;align-items:center;gap:.65rem;margin-bottom:.7rem}
+.flogo img{width:38px;height:38px;border-radius:50%}
+.flogo b{font-family:"Archivo",sans-serif;font-size:.98rem}
+.disclaimer{border-top:1px solid var(--line-soft);max-width:1120px;margin:0 auto;
+  padding:1rem var(--pad) 1.9rem;font-family:"Archivo",sans-serif;font-size:.78rem;color:var(--muted);line-height:1.6}
 .disclaimer strong{color:var(--ink-2);font-weight:600}
 </style>
 </head>
@@ -332,13 +377,12 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
 
 <header class="site">
   <div class="topbar">
-    <a class="wordmark" href="#/home"><span class="dot" aria-hidden="true"></span>Project Air Aware</a>
+    <a class="wordmark" href="#/home"><img src="logo.png" alt="">Project Air Aware</a>
     <span class="tagline">Mountain House, California</span>
   </div>
   <nav class="tabs" aria-label="Site sections">
     <a href="#/home" data-route="home">Home</a>
     <a href="#/problem" data-route="problem">The Problem</a>
-    <a href="#/solutions" data-route="solutions">Our Solutions</a>
     <a href="#/involved" data-route="involved">Get Involved</a>
     <a href="#/milestones" data-route="milestones">Milestones</a>
     <a href="#/about" data-route="about">About Us</a>
@@ -354,33 +398,19 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
   <div class="hero">
     <div>
       <span class="eyebrow">Student-led · Mountain House High School</span>
-      <h1>The air here is doing something to us.</h1>
-      <p class="lede">Mountain House sits in one of America's most polluted air basins, and 42% of us are 18 or younger. We're finding out what that costs — and handing out filters.</p>
+      <h1>Cleaner air for Mountain House.</h1>
+      <p class="lede">We sit in one of America's most polluted air basins, and 42% of us are 18 or younger. Project Air Aware works to cut asthma risk by making the triggers in our air visible.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://tinyurl.com/project-airaware-survey" target="_blank" rel="noopener">Take the survey</a>
         <a class="btn btn-ghost" href="#/problem">See the data</a>
       </div>
     </div>
-
-    <div class="airbox" id="airbox">
-      <div class="stage">
-        <canvas id="air" aria-hidden="true"></canvas>
-        <div class="hud"><span id="hud-state">Unfiltered room air</span><br><b id="hud-count">170</b> particles</div>
-        <div class="fanbar" aria-hidden="true"></div>
-      </div>
-      <div class="ctl">
-        <button class="switch" id="fanbtn" aria-pressed="false">
-          <span class="track2" aria-hidden="true"><span class="knob"></span></span>
-          Turn on the filter
-        </button>
-        <span class="cap">Illustration, not live data</span>
-      </div>
-    </div>
+    <div class="hero-logo"><img src="logo.png" alt="Project Air Aware logo: an inhaler inside a circle of moving air."></div>
   </div>
 
   <div class="band">
     <span class="cap">Lifetime asthma diagnosis · children ages 5–17</span>
-    <div class="cmp" data-animate="band">
+    <div class="cmp">
       <div class="local">
         <span class="fig">28.4%</span>
         <div class="who">San Joaquin County</div>
@@ -398,131 +428,126 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
   </div>
 
   <section class="block">
-    <h2>What we're doing about it</h2>
-    <div class="phases">
-      <div class="phase p1">
-        <span class="n">Phase 1</span><h3>Awareness</h3>
-        <p>A 7-question anonymous survey at community events — then the same survey again after the campaign, so we can prove whether anything changed.</p>
-      </div>
-      <div class="phase p2">
-        <span class="n">Phase 2</span><h3>Solutions</h3>
-        <p>DIY filtration kits: a box fan and four MERV-13 filters, built with families and given away before smoke season.</p>
-      </div>
-      <div class="phase p3">
-        <span class="n">Phase 3</span><h3>Prevention</h3>
-        <p>Trigger education with Mountain House schools, and this site — built to outlast our competition season.</p>
-      </div>
-    </div>
-    <p class="note" style="margin-top:.9rem"><a href="#/solutions">How the filter kits work →</a></p>
+    <h2>What we do</h2>
+    <ul class="points three">
+      <li class="hi"><b>Measure</b><span>A seven-question survey, run before and after the campaign, so change is proven rather than claimed.</span></li>
+      <li><b>Teach</b><span>Trigger education with Mountain House schools, aimed at the ages the county data says are hit hardest.</span></li>
+      <li><b>Last</b><span>This site, kept current through the school year and past our competition season.</span></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Where we are</h2>
+    <p class="striphint">Scroll sideways to see the campaign so far.</p>
+    <div class="strip" id="home-strip"></div>
+    <p class="note"><a href="#/milestones">See all milestones →</a></p>
   </section>
 </article>
 
-<!-- ============================= THE PROBLEM ============================= -->
+<!-- ===================== THE PROBLEM (+ what we do) ===================== -->
 <article class="page" id="page-problem">
   <div class="phead">
     <span class="eyebrow">The problem</span>
-    <h1>Bad air, young lungs, one valley.</h1>
-    <p class="dek">Our county's asthma rate runs well above California's. Our air basin ranks among the worst in the country. And more of us are children than almost anywhere else in the state.</p>
+    <h1>Why asthma hits harder here.</h1>
+    <p class="dek">Three things stack up in Mountain House.</p>
+    <ul class="points three">
+      <li class="hi"><b>A higher rate</b><span>Our county's childhood asthma rate runs well above California's.</span></li>
+      <li><b>Worse air</b><span>Our air basin ranks among the most polluted in the country.</span></li>
+      <li><b>A young city</b><span>42% of residents are 18 or younger — the group most affected.</span></li>
+    </ul>
   </div>
 
   <section class="block">
     <h2>Asthma here vs. statewide</h2>
     <div class="chart">
-      <h3>Lifetime asthma diagnosis rate</h3>
-      <span class="unit">Percent of population</span>
+      <div class="chart-head">
+        <div>
+          <h3 id="ch-title">Lifetime asthma diagnosis rate</h3>
+          <span class="unit" id="ch-unit">Percent of population</span>
+        </div>
+        <div class="seg" role="tablist" aria-label="Choose a measure">
+          <button type="button" role="tab" data-set="prev" aria-selected="true">Diagnosis rate</button>
+          <button type="button" role="tab" data-set="er" aria-selected="false">ER visits</button>
+        </div>
+      </div>
       <div class="legend">
-        <span><i class="swatch sw-local"></i>San Joaquin County</span>
-        <span><i class="swatch sw-state"></i>California</span>
+        <span><i class="swatch sw-a"></i>San Joaquin County</span>
+        <span><i class="swatch sw-b"></i>California</span>
       </div>
-      <div class="plot" data-chart="prev" data-max="30"></div>
-      <button class="tbl-toggle" data-tbl="tbl-prev" aria-expanded="false">View as table</button>
-      <div id="tbl-prev" hidden>
-        <table class="data">
-          <thead><tr><th>Group</th><th style="text-align:right">San Joaquin</th><th style="text-align:right">California</th></tr></thead>
-          <tbody>
-            <tr><td>Children 5–17</td><td class="n">28.4%</td><td class="n">17.1%</td></tr>
-            <tr><td>All ages</td><td class="n">19.5%</td><td class="n">14.1%</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="chart">
-      <h3>Asthma emergency-room visits, children</h3>
-      <span class="unit">Visits per 10,000</span>
-      <div class="legend">
-        <span><i class="swatch sw-local"></i>San Joaquin County</span>
-        <span><i class="swatch sw-state"></i>California</span>
-      </div>
-      <div class="plot" data-chart="er" data-max="130"></div>
-      <button class="tbl-toggle" data-tbl="tbl-er" aria-expanded="false">View as table</button>
-      <div id="tbl-er" hidden>
-        <table class="data">
-          <thead><tr><th>Age group</th><th style="text-align:right">San Joaquin</th><th style="text-align:right">California</th></tr></thead>
-          <tbody>
-            <tr><td>Ages 0–4</td><td class="n">119.4</td><td class="n">103.4</td></tr>
-            <tr><td>Ages 5–17</td><td class="n">80.5</td><td class="n">72.4</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <div id="plot"></div>
+      <button class="tbl-toggle" id="tbl-btn" aria-expanded="false">View as table</button>
+      <div id="tbl" hidden></div>
     </div>
   </section>
 
   <section class="block">
     <h2>Why the air is like this</h2>
-    <figure class="figure">
-      <svg viewBox="0 0 660 224" role="img" aria-label="Cross-section of the San Joaquin Valley: mountain ranges to the west and east enclose the valley floor, holding a layer of pollution close to the ground where Mountain House sits.">
-        <defs>
-          <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="var(--clay-chart)" stop-opacity="0"/>
-            <stop offset="55%" stop-color="var(--clay-chart)" stop-opacity=".20"/>
-            <stop offset="100%" stop-color="var(--clay-chart)" stop-opacity=".42"/>
-          </linearGradient>
-          <linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="var(--sky)" stop-opacity=".20"/>
-            <stop offset="100%" stop-color="var(--sky)" stop-opacity=".02"/>
-          </linearGradient>
-        </defs>
-        <rect x="0" y="0" width="660" height="224" fill="url(#skyg)"/>
-        <g class="haze-move">
-          <rect x="80" y="114" width="500" height="70" fill="url(#haze)"/>
-        </g>
-        <line x1="86" y1="114" x2="574" y2="114" stroke="var(--clay-chart)" stroke-width="1.5" stroke-dasharray="5 4" opacity=".75"/>
-        <path d="M0 184 L46 92 L74 124 L104 70 L132 184 Z" fill="var(--sage)" opacity=".45"/>
-        <path d="M0 184 L34 114 L62 144 L92 104 L118 184 Z" fill="var(--sage)" opacity=".85"/>
-        <path d="M540 184 L570 62 L600 108 L628 48 L660 184 Z" fill="var(--sage)" opacity=".45"/>
-        <path d="M556 184 L588 88 L614 124 L640 80 L660 184 Z" fill="var(--sage)" opacity=".85"/>
-        <line x1="0" y1="184" x2="660" y2="184" stroke="var(--line)" stroke-width="2"/>
-        <g fill="var(--ink)" opacity=".6">
-          <rect x="292" y="162" width="16" height="22" rx="1.5"/><rect x="313" y="154" width="20" height="30" rx="1.5"/>
-          <rect x="338" y="166" width="14" height="18" rx="1.5"/><rect x="271" y="169" width="14" height="15" rx="1.5"/>
-        </g>
-        <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--muted)" letter-spacing=".8">
-          <text x="14" y="206">COAST RANGES</text>
-          <text x="646" y="206" text-anchor="end">SIERRA NEVADA</text>
-          <text x="312" y="206" text-anchor="middle" fill="var(--ink-2)">MOUNTAIN HOUSE</text>
-        </g>
-        <text x="330" y="106" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing=".8" fill="var(--clay)">TRAPPED POLLUTION LAYER</text>
-      </svg>
-      <figcaption>Mountains on both sides hold pollution near the ground instead of letting it blow out. The EPA calls this one of the nation's worst air-quality regions. Illustrative, not to scale.</figcaption>
-    </figure>
-
-    <div class="stats">
-      <div class="tile up"><span class="fig">8 of 8</span><span class="lab">Valley counties in California's top 10 for pollution burden</span><span class="sub">Every single one.</span></div>
-      <div class="tile up"><span class="fig">Top 10</span><span class="lab">Our county's statewide rank for fine particulate matter</span><span class="sub">Top half for ozone, too.</span></div>
-      <div class="tile up"><span class="fig">~70%</span><span class="lab">Of Valley NOx emissions come from heavy trucks and farm equipment</span><span class="sub">They're ~5% of vehicles.</span></div>
-      <div class="tile up"><span class="fig">~7×</span><span class="lab">More smog-forming pollution than ~3 million passenger cars combined</span><span class="sub">From that same 5%.</span></div>
+    <div class="split">
+      <figure class="figure">
+        <svg viewBox="0 0 660 224" role="img" aria-label="Cross-section of the San Joaquin Valley: mountain ranges to the west and east enclose the valley floor, holding a layer of pollution close to the ground where Mountain House sits.">
+          <defs>
+            <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="var(--chart-b)" stop-opacity="0"/>
+              <stop offset="55%" stop-color="var(--chart-b)" stop-opacity=".22"/>
+              <stop offset="100%" stop-color="var(--chart-b)" stop-opacity=".45"/>
+            </linearGradient>
+            <linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="var(--sky)" stop-opacity=".22"/>
+              <stop offset="100%" stop-color="var(--sky)" stop-opacity=".02"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="660" height="224" fill="url(#skyg)"/>
+          <g class="haze-move"><rect x="80" y="114" width="500" height="70" fill="url(#haze)"/></g>
+          <line x1="86" y1="114" x2="574" y2="114" stroke="var(--chart-b)" stroke-width="1.5" stroke-dasharray="5 4" opacity=".8"/>
+          <path d="M0 184 L46 92 L74 124 L104 70 L132 184 Z" fill="var(--sage)" opacity=".45"/>
+          <path d="M0 184 L34 114 L62 144 L92 104 L118 184 Z" fill="var(--sage)" opacity=".85"/>
+          <path d="M540 184 L570 62 L600 108 L628 48 L660 184 Z" fill="var(--sage)" opacity=".45"/>
+          <path d="M556 184 L588 88 L614 124 L640 80 L660 184 Z" fill="var(--sage)" opacity=".85"/>
+          <line x1="0" y1="184" x2="660" y2="184" stroke="var(--line)" stroke-width="2"/>
+          <g fill="var(--ink)" opacity=".6">
+            <rect x="292" y="162" width="16" height="22" rx="1.5"/><rect x="313" y="154" width="20" height="30" rx="1.5"/>
+            <rect x="338" y="166" width="14" height="18" rx="1.5"/><rect x="271" y="169" width="14" height="15" rx="1.5"/>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--muted)" letter-spacing=".8">
+            <text x="14" y="206">COAST RANGES</text>
+            <text x="646" y="206" text-anchor="end">SIERRA NEVADA</text>
+            <text x="312" y="206" text-anchor="middle" fill="var(--ink-2)">MOUNTAIN HOUSE</text>
+          </g>
+          <text x="330" y="106" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing=".8" fill="var(--chart-b)">TRAPPED POLLUTION LAYER</text>
+        </svg>
+        <figcaption>Mountains on both sides hold pollution near the ground instead of letting it blow out. The EPA calls this one of the nation's worst air-quality regions. Illustrative, not to scale.</figcaption>
+      </figure>
+      <ul class="points">
+        <li class="hi"><b>8 of 8 Valley counties</b><span>rank in California's top 10 for overall pollution burden.</span></li>
+        <li><b>Top 10 statewide for PM2.5</b><span>San Joaquin County — and in the top half for ozone.</span></li>
+        <li><b>~5% of vehicles, ~70% of NOx</b><span>Heavy trucks and farm equipment produce about seven times the smog-forming pollution of the Valley's ~3 million cars combined.</span></li>
+      </ul>
     </div>
   </section>
 
   <section class="block">
     <h2>Who it hits hardest</h2>
-    <p class="prose">Genetics doesn't make the pollution — it decides who's most vulnerable to it.</p>
+    <p class="prose">Genetics doesn't make the pollution — it decides who is most vulnerable to it.</p>
     <div class="stats">
       <div class="tile"><span class="fig">1 in 4</span><span class="lab">Risk when one parent has asthma</span><span class="sub">About 25%.</span></div>
       <div class="tile"><span class="fig">1 in 2</span><span class="lab">Risk when both parents have asthma</span><span class="sub">About 50%.</span></div>
       <div class="tile"><span class="fig">42%</span><span class="lab">Of Mountain House residents are 18 or younger</span><span class="sub">~28,795 people live here.</span></div>
     </div>
+  </section>
+
+  <section class="block">
+    <h2>What we're doing about it</h2>
+    <div class="phases">
+      <div class="phase p1">
+        <span class="n">Phase 1</span><h3>Awareness</h3>
+        <p>Seven anonymous questions, asked at community events and outside local businesses — then the identical survey again after the campaign, so the result is measured rather than claimed.</p>
+      </div>
+      <div class="phase p3">
+        <span class="n">Phase 2</span><h3>Prevention</h3>
+        <p>Trigger education with Mountain House schools, aimed at the 5–17 age group the county data says gets hit hardest. We've also presented to the City Council to make the partnership last.</p>
+      </div>
+    </div>
+    <div class="cta-row"><a class="btn btn-primary" href="https://tinyurl.com/project-airaware-survey" target="_blank" rel="noopener">Take the survey</a></div>
   </section>
 
   <section class="block">
@@ -540,118 +565,27 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
   </section>
 </article>
 
-<!-- ============================ OUR SOLUTIONS ============================ -->
-<article class="page" id="page-solutions">
-  <div class="phead">
-    <span class="eyebrow">Our solutions</span>
-    <h1>A box fan, four filters, and a before-and-after.</h1>
-    <p class="dek">Three phases. Each one leaves something behind: a measurement, a working air cleaner in someone's living room, or a lesson a kid remembers.</p>
-  </div>
-
-  <section class="block">
-    <h2>The kit — tap a part</h2>
-    <div class="kit">
-      <div class="kit-svg">
-        <svg viewBox="0 0 420 320" role="img" aria-label="Diagram of the DIY air filtration kit: a box fan with four MERV-13 filters arranged around it, with arrows showing air drawn in through the filters.">
-          <defs>
-            <pattern id="pleat" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="7" stroke="var(--blue-chart)" stroke-width="2.2" opacity=".33"/>
-            </pattern>
-          </defs>
-
-          <!-- airflow arrows -->
-          <g stroke="var(--sky)" stroke-width="2" fill="none" opacity=".55" stroke-linecap="round">
-            <path d="M40 60 L86 96"/><path d="M380 60 L334 96"/>
-            <path d="M40 260 L86 224"/><path d="M380 260 L334 224"/>
-          </g>
-
-          <!-- filters -->
-          <g class="hot" data-part="filters" tabindex="0" role="button" aria-label="MERV-13 filters">
-            <rect class="hl" x="82" y="34" width="256" height="44" rx="5" fill="var(--blue-chart)" opacity="0"/>
-            <rect x="86" y="38" width="248" height="36" rx="4" fill="url(#pleat)" stroke="var(--blue-chart)" stroke-width="1.6"/>
-            <rect x="86" y="246" width="248" height="36" rx="4" fill="url(#pleat)" stroke="var(--blue-chart)" stroke-width="1.6"/>
-            <rect x="34" y="86" width="36" height="148" rx="4" fill="url(#pleat)" stroke="var(--blue-chart)" stroke-width="1.6"/>
-            <rect x="350" y="86" width="36" height="148" rx="4" fill="url(#pleat)" stroke="var(--blue-chart)" stroke-width="1.6"/>
-          </g>
-
-          <!-- fan -->
-          <g class="hot" data-part="fan" tabindex="0" role="button" aria-label="Box fan">
-            <rect class="hl" x="94" y="94" width="232" height="132" rx="9" fill="var(--blue-chart)" opacity="0"/>
-            <rect x="100" y="100" width="220" height="120" rx="7" fill="var(--surface-2)" stroke="var(--line)" stroke-width="1.6"/>
-            <circle cx="210" cy="160" r="44" fill="none" stroke="var(--muted)" stroke-width="1.4" opacity=".8"/>
-            <circle cx="210" cy="160" r="30" fill="none" stroke="var(--muted)" stroke-width="1.4" opacity=".6"/>
-            <circle cx="210" cy="160" r="16" fill="none" stroke="var(--muted)" stroke-width="1.4" opacity=".5"/>
-            <circle cx="210" cy="160" r="5" fill="var(--muted)"/>
-            <g stroke="var(--muted)" stroke-width="1.4" opacity=".5">
-              <line x1="210" y1="116" x2="210" y2="204"/><line x1="166" y1="160" x2="254" y2="160"/>
-            </g>
-          </g>
-
-          <g font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--muted)" letter-spacing=".7">
-            <text x="210" y="26" text-anchor="middle">MERV-13 FILTER ×4</text>
-            <text x="210" y="303" text-anchor="middle">BOX FAN AT THE CENTRE · AIR DRAWN IN THROUGH ALL FOUR</text>
-          </g>
-        </svg>
-      </div>
-
-      <div>
-        <div class="kit-info" id="kitinfo" aria-live="polite">
-          <span class="k" id="kit-k">The idea</span>
-          <h3 id="kit-h">One fan, four filters</h3>
-          <p id="kit-p">EPA testing found this kind of build can outperform some considerably more expensive commercial air purifiers. Tap a part of the diagram to see what each piece does.</p>
-        </div>
-        <div class="partbtns">
-          <button class="partbtn" data-part="fan" aria-pressed="false">The fan</button>
-          <button class="partbtn" data-part="filters" aria-pressed="false">The filters</button>
-          <button class="partbtn" data-part="why4" aria-pressed="false">Why four?</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h3>The part people skip</h3>
-      <p>Filters have to be changed. EPA testing found units running on dirty filters were <em>"almost completely ineffective"</em> — a clogged kit isn't a weaker air cleaner, it's close to none at all. If you get a kit from us, we'll show you what a spent filter looks like.</p>
-      <p class="src">Source: U.S. EPA research on do-it-yourself air cleaners.</p>
-    </div>
-  </section>
-
-  <section class="block">
-    <h2>The other two phases</h2>
-    <div class="phases">
-      <div class="phase p1">
-        <span class="n">Phase 1</span><h3>Awareness</h3>
-        <p>Seven anonymous questions, asked at community events and outside local businesses. Then the identical survey again after the campaign — same wording, same questions — so the result is measured, not claimed.</p>
-      </div>
-      <div class="phase p3">
-        <span class="n">Phase 3</span><h3>Prevention</h3>
-        <p>Trigger education with Mountain House schools, aimed at the 5–17 age group the county data says gets hit hardest. We've also presented to the City Council to make the partnership last.</p>
-      </div>
-      <div class="phase p2">
-        <span class="n">Always</span><h3>This site</h3>
-        <p>Built to be updated across the school year, so a family scanning a QR code at a spring booth lands on something current rather than a dead project page.</p>
-      </div>
-    </div>
-  </section>
-</article>
-
 <!-- ============================= GET INVOLVED ============================= -->
 <article class="page" id="page-involved">
   <div class="phead">
     <span class="eyebrow">Get involved</span>
-    <h1>Two minutes. Seven questions. Anonymous.</h1>
-    <p class="dek">The survey is the most useful thing you can do for this project — it's the only measurement of asthma awareness that exists for Mountain House.</p>
+    <h1>How you can help.</h1>
+  </div>
+
+  <div class="joinsplit">
+    <div class="joinlogo"><img src="logo.png" alt="Project Air Aware logo."></div>
+    <div>
+      <h2>Take the survey</h2>
+      <p class="prose">Anonymous, seven questions, about two minutes. It's the only measurement of asthma awareness that exists for Mountain House — and we run it again after the campaign to see what changed.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://tinyurl.com/project-airaware-survey" target="_blank" rel="noopener">Open the survey</a>
+      </div>
+      <p class="note" style="margin-top:.8rem">Short link: <a href="https://tinyurl.com/project-airaware-survey" target="_blank" rel="noopener">tinyurl.com/project-airaware-survey</a></p>
+    </div>
   </div>
 
   <section class="block">
-    <h2>Take the survey</h2>
-    <div class="cta-row" style="margin-top:0">
-      <a class="btn btn-primary" href="https://tinyurl.com/project-airaware-survey" target="_blank" rel="noopener">Open the survey</a>
-    </div>
-    <p class="note" style="margin-top:.9rem">Short link: <a href="https://tinyurl.com/project-airaware-survey" target="_blank" rel="noopener">tinyurl.com/project-airaware-survey</a> · <a href="https://docs.google.com/forms/d/e/1FAIpQLScRrSudSeC5l6v-nakl_Sht5JARTK5EARQ18KCjduUuRMHDLA/viewform" target="_blank" rel="noopener">full Google Forms link</a></p>
-  </section>
-
-  <section class="block">
-    <h2>Find us</h2>
+    <h2>Follow us</h2>
     <div class="contact">
       <a class="card" href="https://www.instagram.com/project_airaware" target="_blank" rel="noopener"><span class="k">Instagram</span><span class="v">@project_airaware</span></a>
       <a class="card" href="https://www.tiktok.com/@project_airaware" target="_blank" rel="noopener"><span class="k">TikTok</span><span class="v">@project_airaware</span></a>
@@ -660,9 +594,15 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
   </section>
 
   <section class="block">
-    <h2>Businesses and organizations</h2>
-    <p class="prose">If you run a business, a group, or an event in Mountain House and you'd let us set up a table, post a survey QR code, or hand out kit information — we'd like to hear from you. A booth for an afternoon or a flyer by the register both help.</p>
-    <p class="prose" style="margin-top:.8rem"><a href="mailto:projectairaware@gmail.com">projectairaware@gmail.com</a></p>
+    <h2>Partner with us</h2>
+    <p class="prose">If you run a business, a group, or an event in Mountain House, here's what helps most:</p>
+    <ul class="points two">
+      <li><b>Host a table</b><span>An afternoon at your event or storefront, with us running the survey.</span></li>
+      <li><b>Post a QR code</b><span>By the register, or on a community board.</span></li>
+      <li><b>Give us a slot</b><span>A few minutes at a community meeting or school event.</span></li>
+      <li><b>Share our posts</b><span>Reposting to a local audience reaches people we can't.</span></li>
+    </ul>
+    <p class="prose" style="margin-top:1.1rem">Email <a href="mailto:projectairaware@gmail.com">projectairaware@gmail.com</a> and tell us what you'd be open to.</p>
   </section>
 </article>
 
@@ -670,52 +610,12 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
 <article class="page" id="page-milestones">
   <div class="phead">
     <span class="eyebrow">Milestones</span>
-    <h1>Where the campaign stands.</h1>
-    <p class="dek">Updated as the year goes on.</p>
+    <h1>What we've done.</h1>
+    <p class="dek">Photos go in as we run each event. Updated through the school year.</p>
   </div>
-
   <section class="block">
-    <h2>Done and underway</h2>
-    <!-- ==================================================================
-         ADDING A MILESTONE
-         Copy an <li> block and drop it where it belongs.
-         <li class="done"> filled teal dot (finished)
-         <li class="now">  ringed amber dot (happening now)
-         <li>              hollow dot (planned)
-         The <span class="pill"> is the little tag; use "pill done" for Complete.
-         Put a real date in <span class="when"> when you have one.
-         ================================================================== -->
-    <ol class="timeline">
-      <li class="done"><span class="when">2025–26 season</span>
-        <h3>Research and scoping <span class="pill done">Complete</span></h3>
-        <p>Pulled county asthma data from CDPH, reviewed Valley air quality rankings, and narrowed to the two triggers people can act on.</p></li>
-      <li class="done"><span class="when">2025–26 season</span>
-        <h3>Pre-campaign survey launched <span class="pill done">Complete</span></h3>
-        <p>Seven anonymous questions at community events, setting the baseline.</p></li>
-      <li class="done"><span class="when">2025–26 season</span>
-        <h3>Presented to Mountain House City Council <span class="pill done">Complete</span></h3>
-        <p>Put asthma and air quality on the city's radar and started a local partnership.</p></li>
-      <li class="now"><span class="when">Now</span>
-        <h3>This website goes live <span class="pill">In progress</span></h3>
-        <p>A permanent home for the data, the kits, and the survey link.</p></li>
-      <li class="now"><span class="when">Now</span>
-        <h3>HOSA Community Awareness competition <span class="pill">In progress</span></h3>
-        <p>Documenting the campaign and advancing through the competition season.</p></li>
-    </ol>
-  </section>
-
-  <section class="block">
-    <h2>Next</h2>
-    <ol class="timeline">
-      <li><span class="when">Planned</span><h3>Filter kit builds and giveaways</h3>
-        <p>Built with families across Mountain House, timed toward wildfire smoke season.</p></li>
-      <li><span class="when">Planned</span><h3>School trigger-education partnerships</h3>
-        <p>Lessons for the 5–17 age group the county data identifies as hardest hit.</p></li>
-      <li><span class="when">Planned</span><h3>Post-campaign survey</h3>
-        <p>The identical seven questions, run again, compared against the baseline.</p></li>
-      <li><span class="when">Planned</span><h3>Expansion to Tracy, Lathrop and Manteca</h3>
-        <p>Same air basin, same triggers, same campaign.</p></li>
-    </ol>
+    <h2>The campaign so far</h2>
+    <div class="gal" id="gal-all"></div>
   </section>
 </article>
 
@@ -723,12 +623,17 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
 <article class="page" id="page-about">
   <div class="phead">
     <span class="eyebrow">About us</span>
-    <h1>Four juniors from Mountain House High School.</h1>
-    <p class="dek">Project Air Aware is a student-led community health initiative in Mountain House, California.</p>
+    <h1>Who we are.</h1>
+  </div>
+
+  <div class="mission">
+    <span class="cap">Our mission</span>
+    <p>Cut asthma risk in Mountain House by making the triggers in our air visible, and giving people practical ways to avoid them.</p>
   </div>
 
   <section class="block">
     <h2>The team</h2>
+    <p class="prose">Four juniors at Mountain House High School.</p>
     <div class="team">
       <div class="member"><div class="name">Ashrith</div><div class="role">Junior</div></div>
       <div class="member"><div class="name">Smriti</div><div class="role">Junior</div></div>
@@ -739,14 +644,11 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
 
   <section class="block">
     <h2>What HOSA is</h2>
-    <p class="prose">HOSA – Future Health Professionals is a national student organization for people heading into health care. We compete in its <strong>Community Awareness</strong> event, which asks a chapter to find a real health problem in its own community and run an evidence-based campaign about it — not write about one.</p>
-    <p class="prose" style="margin-top:.8rem">That shaped everything here: a local issue, local data, a survey run before and after so the result is measured rather than asserted.</p>
-  </section>
-
-  <section class="block">
-    <h2>Our mission</h2>
-    <p class="prose">Reduce asthma risk in Mountain House by making environmental triggers visible, handing people practical tools to cut their exposure, and building prevention habits that stick — grounded in real data.</p>
-    <p class="prose" style="margin-top:.8rem">We're not trying to cover everything about asthma. No emergency training, no clinical content. We make the air here legible to the people breathing it, and put working filters in as many homes as we can reach.</p>
+    <ul class="points two">
+      <li><b>HOSA – Future Health Professionals</b><span>A national student organization for people heading into health care, with chapters in high schools and colleges.</span></li>
+      <li class="hi"><b>Community Awareness</b><span>The event we compete in. It asks a chapter to find a real health problem in its own community and run an evidence-based campaign about it — not write about one.</span></li>
+    </ul>
+    <p class="prose" style="margin-top:1.1rem">That shaped everything here: a local issue, local data, and a survey run before and after so the result is measured rather than asserted.</p>
   </section>
 </article>
 
@@ -754,38 +656,69 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
 <article class="page" id="page-resources">
   <div class="phead">
     <span class="eyebrow">Resources</span>
-    <h1>Better sources than us.</h1>
-    <p class="dek">Where to go for real asthma information, and how to check the air where you are.</p>
+    <h1>Know the signs.</h1>
+  </div>
+
+  <div class="alert">
+    <h2>Recognizing an asthma attack</h2>
+    <p class="lead">Four signs to know — and the two things to do if you see them.</p>
+    <div class="symp">
+      <div class="sy">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h3l2.5-5 3 10 2.5-7 2 4h7"/></svg>
+        <b>Wheezing</b>
+      </div>
+      <div class="sy">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4"/><path d="M7.5 8h9l1.2 6.2A5.7 5.7 0 0 1 12 21a5.7 5.7 0 0 1-5.7-6.8z"/></svg>
+        <b>Coughing</b>
+      </div>
+      <div class="sy">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v8"/><path d="M12 12c0 4-2 8-5 8a3 3 0 0 1-3-3c0-4 1.6-8 3-9.5"/><path d="M12 12c0 4 2 8 5 8a3 3 0 0 0 3-3c0-4-1.6-8-3-9.5"/></svg>
+        <b>Shortness of breath</b>
+      </div>
+      <div class="sy">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 8.6a4.5 4.5 0 0 0-8.5-2 4.5 4.5 0 0 0-8.5 2c0 5 8.5 10.4 8.5 10.4s8.5-5.4 8.5-10.4z"/><path d="M7 11.5h2.6L11 9l1.6 5 1.4-2.5H17"/></svg>
+        <b>Chest tightness</b>
+      </div>
+    </div>
+    <div class="doact">
+      <div>
+        <b>Their own inhaler</b>
+        <span>A person with asthma should use their own prescribed inhaler, exactly as their doctor directed. Never share an inhaler.</span>
+      </div>
+      <div class="emg">
+        <b>Call 911</b>
+        <span>If the symptoms are severe, or they don't improve, call 911 straight away.</span>
+      </div>
+    </div>
+    <p class="src">Sources: CDC; Asthma and Allergy Foundation of America. This is a student awareness project — not medical advice, and not a substitute for a doctor.</p>
   </div>
 
   <section class="block">
-    <h2>Asthma information</h2>
-    <ul class="links">
+    <h2>Check the air today</h2>
+    <p class="prose">Air quality is reported as an AQI number. Tap a band to see what it means.</p>
+    <div class="aqi">
+      <div class="aqiscale" id="aqiscale" role="tablist" aria-label="Air Quality Index categories"></div>
+      <div class="aqiout" id="aqiout" aria-live="polite"></div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://www.airnow.gov/" target="_blank" rel="noopener">Check today's AQI</a>
+        <a class="btn btn-ghost" href="https://www.valleyair.org/" target="_blank" rel="noopener">Our Valley air district</a>
+      </div>
+      <p class="src">Categories and colors as published by AirNow (U.S. EPA).</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Learn more</h2>
+    <ul class="links two">
       <li><a href="https://www.cdc.gov/asthma/" target="_blank" rel="noopener">CDC — Asthma</a>
         <span class="d">What asthma is, triggers, data, and management basics.</span></li>
       <li><a href="https://aafa.org/" target="_blank" rel="noopener">Asthma and Allergy Foundation of America</a>
-        <span class="d">Patient-focused guidance, including managing triggers at home.</span></li>
-    </ul>
-  </section>
-
-  <section class="block">
-    <h2>Check the air today</h2>
-    <ul class="links">
-      <li><a href="https://www.valleyair.org/" target="_blank" rel="noopener">San Joaquin Valley Air Pollution Control District</a>
-        <span class="d">Daily forecasts and air quality index tools for our basin.</span></li>
+        <span class="d">Patient guidance, including managing triggers at home.</span></li>
       <li><a href="https://www.airnow.gov/" target="_blank" rel="noopener">AirNow (EPA)</a>
         <span class="d">Enter a ZIP code for the current AQI, including during smoke events.</span></li>
+      <li><a href="https://www.valleyair.org/" target="_blank" rel="noopener">San Joaquin Valley Air District</a>
+        <span class="d">Daily forecasts and alerts for our basin.</span></li>
     </ul>
-  </section>
-
-  <section class="block">
-    <h2>Recognizing symptoms</h2>
-    <div class="panel">
-      <h3>If someone is having trouble breathing</h3>
-      <p>Common asthma symptoms are wheezing, coughing, shortness of breath, and chest tightness. A person with asthma should use their <strong>own prescribed inhaler</strong> as their doctor directed. <strong>Call 911</strong> if symptoms are severe or don't improve.</p>
-      <p>That's as far as this page goes. We're a student awareness project, not a medical resource.</p>
-      <p class="src">Sources: CDC; Asthma and Allergy Foundation of America. Not medical advice.</p>
-    </div>
   </section>
 </article>
 
@@ -797,7 +730,7 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
   <hr class="layer-rule">
   <div class="fwrap">
     <div>
-      <h4>Project Air Aware</h4>
+      <div class="flogo"><img src="logo.png" alt=""><b>Project Air Aware</b></div>
       <p>A student-led asthma and air quality campaign from Mountain House High School, Mountain House, California.</p>
     </div>
     <div>
@@ -827,10 +760,9 @@ footer.site{border-top:1px solid var(--line-soft);background:var(--surface);marg
 var REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ------------------------------- routing ------------------------------- */
-var ROUTES={home:"Project Air Aware",problem:"The Problem · Project Air Aware",
-  solutions:"Our Solutions · Project Air Aware",involved:"Get Involved · Project Air Aware",
-  milestones:"Milestones · Project Air Aware",about:"About Us · Project Air Aware",
-  resources:"Resources · Project Air Aware"};
+var ROUTES={home:"Project Air Aware", problem:"The Problem · Project Air Aware",
+  involved:"Get Involved · Project Air Aware", milestones:"Milestones · Project Air Aware",
+  about:"About Us · Project Air Aware", resources:"Resources · Project Air Aware"};
 var tabs=[].slice.call(document.querySelectorAll("nav.tabs a"));
 function route(){var h=(location.hash||"").replace(/^#\/?/,"").split("?")[0];return ROUTES[h]?h:"home";}
 function show(r,scroll){
@@ -847,24 +779,76 @@ function show(r,scroll){
   document.title=ROUTES[r];
   if(scroll) window.scrollTo({top:0,behavior:REDUCED?"auto":"smooth"});
   if(r==="home") fillBand();
-  if(r==="problem") drawBars();
+  if(r==="problem") drawChart();
 }
 addEventListener("hashchange",function(){show(route(),true);});
 
-/* --------------------------- headline stat band --------------------------- */
 function fillBand(){
   setTimeout(function(){
-    [].forEach.call(document.querySelectorAll(".cmp .rail i"),function(i){ i.style.width=i.dataset.w+"%"; });
+    [].forEach.call(document.querySelectorAll(".cmp .rail i"),function(i){i.style.width=i.dataset.w+"%";});
   },60);
 }
 
-/* -------------------------------- charts -------------------------------- */
-var DATA={
-  prev:{groups:[{label:"Children ages 5–17",local:28.4,state:17.1},{label:"All ages",local:19.5,state:14.1}],
-        ticks:[0,10,20,30],pct:true,note:"lifetime asthma diagnosis"},
-  er:{groups:[{label:"Children ages 0–4",local:119.4,state:103.4},{label:"Children ages 5–17",local:80.5,state:72.4}],
-      ticks:[0,40,80,120],pct:false,note:"ER visits per 10,000"}
+/* ------------------------- milestones (gallery) -------------------------
+   Add or edit an entry below and it appears on both the Home strip and the
+   Milestones page. state: "done" | "now" | "next".
+   photo: "" shows a placeholder; set it to e.g. "photos/council.jpg" once
+   you have the image (put the file in a "photos" folder in the repo).      */
+var MILESTONES=[
+  {state:"done", when:"2025–26 season", title:"Research and scoping",
+   text:"Pulled county asthma data from CDPH and narrowed the campaign to the triggers people can act on.", photo:""},
+  {state:"done", when:"2025–26 season", title:"Survey launched",
+   text:"Seven anonymous questions, taken to community events and local businesses.", photo:""},
+  {state:"done", when:"2025–26 season", title:"City Council presentation",
+   text:"Put asthma and air quality on the city's radar and started a local partnership.", photo:""},
+  {state:"now",  when:"Now", title:"Website live",
+   text:"A permanent home for the data, the survey, and everything that follows.", photo:""},
+  {state:"now",  when:"Now", title:"HOSA competition",
+   text:"Documenting the campaign for the Community Awareness event.", photo:""},
+  {state:"next", when:"Planned", title:"School partnerships",
+   text:"Trigger lessons for the 5–17 age group the county data identifies as hardest hit.", photo:""},
+  {state:"next", when:"Planned", title:"Post-campaign survey",
+   text:"The identical seven questions, run again and compared against the baseline.", photo:""},
+  {state:"next", when:"Planned", title:"Tracy, Lathrop & Manteca",
+   text:"Same air basin, same triggers — bringing the campaign to neighbouring communities.", photo:""}
+];
+var PILL={done:["done","Complete"], now:["now","In progress"], next:["","Planned"]};
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function card(m){
+  var el=document.createElement("article");
+  el.className="gcard";
+  var shot = m.photo
+    ? '<img class="shot" src="'+esc(m.photo)+'" alt="'+esc(m.title)+'">'
+    : '<div class="shot" role="img" aria-label="Photo not added yet"></div>';
+  var p=PILL[m.state]||PILL.next;
+  el.innerHTML = shot +
+    '<div class="gbody">' +
+      '<span class="pill '+p[0]+'">'+p[1]+'</span>' +
+      '<h3>'+esc(m.title)+'</h3>' +
+      '<p>'+esc(m.text)+'</p>' +
+      '<span class="gwhen">'+esc(m.when)+'</span>' +
+    '</div>';
+  return el;
+}
+(function buildGalleries(){
+  var strip=document.getElementById("home-strip"), all=document.getElementById("gal-all");
+  MILESTONES.forEach(function(m){ all.appendChild(card(m)); });
+  MILESTONES.filter(function(m){return m.state!=="next";}).forEach(function(m){ strip.appendChild(card(m)); });
+})();
+
+/* ---------------------------- dumbbell chart ---------------------------- */
+var SETS={
+  prev:{title:"Lifetime asthma diagnosis rate", unit:"Percent of population", max:30,
+        ticks:[0,10,20,30], pct:true, gap:"points",
+        rows:[{label:"Children ages 5–17", a:28.4, b:17.1},
+              {label:"All ages",           a:19.5, b:14.1}]},
+  er:{title:"Asthma emergency-room visits, children", unit:"Visits per 10,000", max:130,
+      ticks:[0,40,80,120], pct:false, gap:"per 10,000",
+      rows:[{label:"Children ages 0–4",  a:119.4, b:103.4},
+            {label:"Children ages 5–17", a:80.5,  b:72.4}]}
 };
+var NAME_A="San Joaquin County", NAME_B="California";
 var tip=document.getElementById("tip");
 function moveTip(e){var x=e.clientX+14,y=e.clientY+16,w=tip.offsetWidth,h=tip.offsetHeight;
   if(x+w>innerWidth-8)x=innerWidth-w-8; if(y+h>innerHeight-8)y=e.clientY-h-12;
@@ -872,150 +856,115 @@ function moveTip(e){var x=e.clientX+14,y=e.clientY+16,w=tip.offsetWidth,h=tip.of
 function showTip(t,e){tip.textContent=t;tip.classList.add("on");moveTip(e);}
 function hideTip(){tip.classList.remove("on");}
 
-var built=false;
-function drawBars(){
-  if(built){ setTimeout(grow,60); return; }
-  built=true;
-  [].forEach.call(document.querySelectorAll(".plot"),function(plot){
-    var d=DATA[plot.dataset.chart],max=parseFloat(plot.dataset.max),frag=document.createDocumentFragment();
-    d.groups.forEach(function(g){
-      var wrap=document.createElement("div");wrap.className="group";
-      var lab=document.createElement("div");lab.className="group-lab";lab.textContent=g.label;wrap.appendChild(lab);
-      [["local","San Joaquin County"],["state","California"]].forEach(function(pair){
-        var key=pair[0],who=pair[1],v=g[key];
-        var row=document.createElement("div");row.className="brow";
-        var track=document.createElement("div");track.className="track";
-        var bar=document.createElement("button");bar.type="button";bar.className="mark "+key;
-        bar.dataset.w=Math.max((v/max)*100,1);
-        var txt=who+" — "+(d.pct?v.toFixed(1)+"%":v.toFixed(1))+" "+d.note+", "+g.label.toLowerCase();
-        bar.setAttribute("aria-label",txt);
-        bar.addEventListener("mouseenter",function(e){showTip(txt,e);});
-        bar.addEventListener("mousemove",moveTip);
-        bar.addEventListener("mouseleave",hideTip);
-        bar.addEventListener("focus",function(){var r=bar.getBoundingClientRect();showTip(txt,{clientX:r.right-40,clientY:r.top});});
-        bar.addEventListener("blur",hideTip);
-        track.appendChild(bar);
-        var val=document.createElement("span");val.className="val";
-        val.textContent=d.pct?v.toFixed(1)+"%":v.toFixed(1);
-        row.appendChild(track);row.appendChild(val);wrap.appendChild(row);
-      });
-      frag.appendChild(wrap);
-    });
-    var arow=document.createElement("div");arow.className="brow";
-    var atrack=document.createElement("div");atrack.className="track";atrack.style.height="auto";
-    var axis=document.createElement("div");axis.className="axis";
-    d.ticks.forEach(function(t){
-      var el=document.createElement("span");el.className="tick";
-      el.style.left=(t/max)*100+"%";el.textContent=d.pct?t+"%":t;axis.appendChild(el);
-    });
-    atrack.appendChild(axis);
-    var sp=document.createElement("span");sp.className="val";sp.setAttribute("aria-hidden","true");
-    arow.appendChild(atrack);arow.appendChild(sp);frag.appendChild(arow);
-    plot.appendChild(frag);
-  });
-  setTimeout(grow,60);
-}
-function grow(){[].forEach.call(document.querySelectorAll(".mark"),function(b){b.style.width=b.dataset.w+"%";});}
+var current="prev";
+function fmt(d,v){return d.pct ? v.toFixed(1)+"%" : v.toFixed(1);}
 
-[].forEach.call(document.querySelectorAll(".tbl-toggle"),function(btn){
-  btn.addEventListener("click",function(){
-    var t=document.getElementById(btn.dataset.tbl),open=t.hidden;
-    t.hidden=!open;btn.setAttribute("aria-expanded",String(open));
-    btn.textContent=open?"Hide table":"View as table";
+function drawChart(){
+  var d=SETS[current], plot=document.getElementById("plot");
+  document.getElementById("ch-title").textContent=d.title;
+  document.getElementById("ch-unit").textContent=d.unit;
+  plot.innerHTML="";
+
+  d.rows.forEach(function(r){
+    var g=document.createElement("div"); g.className="dgroup";
+    var lab=document.createElement("div"); lab.className="glab"; lab.textContent=r.label;
+
+    var track=document.createElement("div"); track.className="dtrack";
+    var base=document.createElement("span"); base.className="base"; track.appendChild(base);
+
+    var lo=Math.min(r.a,r.b), hi=Math.max(r.a,r.b);
+    var bar=document.createElement("span"); bar.className="dbar";
+    var dotB=document.createElement("button"); dotB.type="button"; dotB.className="dot b";
+    var dotA=document.createElement("button"); dotA.type="button"; dotA.className="dot a";
+    var txtB=NAME_B+" — "+fmt(d,r.b)+", "+r.label.toLowerCase();
+    var txtA=NAME_A+" — "+fmt(d,r.a)+", "+r.label.toLowerCase();
+    dotB.setAttribute("aria-label",txtB); dotA.setAttribute("aria-label",txtA);
+    [[dotB,txtB],[dotA,txtA]].forEach(function(pair){
+      var el=pair[0], txt=pair[1];
+      el.addEventListener("mouseenter",function(e){showTip(txt,e);});
+      el.addEventListener("mousemove",moveTip);
+      el.addEventListener("mouseleave",hideTip);
+      el.addEventListener("focus",function(){var q=el.getBoundingClientRect();showTip(txt,{clientX:q.right,clientY:q.top});});
+      el.addEventListener("blur",hideTip);
+    });
+    track.appendChild(bar); track.appendChild(dotB); track.appendChild(dotA);
+
+    var cap=document.createElement("div"); cap.className="dcap";
+    cap.innerHTML='<em><i class="swatch sw-b"></i>'+NAME_B+' <span class="val">'+fmt(d,r.b)+'</span></em>'+
+                  '<em><i class="swatch sw-a"></i>'+NAME_A+' <span class="val">'+fmt(d,r.a)+'</span></em>'+
+                  '<span class="gap">+'+(Math.round((r.a-r.b)*10)/10)+' '+d.gap+'</span>';
+
+    g.appendChild(lab); g.appendChild(track); g.appendChild(cap);
+    plot.appendChild(g);
+
+    setTimeout(function(){
+      bar.style.left=(lo/d.max*100)+"%";
+      bar.style.width=((hi-lo)/d.max*100)+"%";
+      dotB.style.left=(r.b/d.max*100)+"%";
+      dotA.style.left=(r.a/d.max*100)+"%";
+    },60);
+  });
+
+  var axis=document.createElement("div"); axis.className="axis";
+  d.ticks.forEach(function(t){
+    var el=document.createElement("span"); el.className="tick";
+    el.style.left=(t/d.max*100)+"%";
+    el.textContent = d.pct ? t+"%" : t;
+    axis.appendChild(el);
+  });
+  plot.appendChild(axis);
+
+  var rows=d.rows.map(function(r){
+    return "<tr><td>"+r.label+"</td><td class='n'>"+fmt(d,r.a)+"</td><td class='n'>"+fmt(d,r.b)+"</td></tr>";
+  }).join("");
+  document.getElementById("tbl").innerHTML=
+    "<table class='data'><thead><tr><th>Group</th><th style='text-align:right'>San Joaquin</th>"+
+    "<th style='text-align:right'>California</th></tr></thead><tbody>"+rows+"</tbody></table>";
+}
+[].forEach.call(document.querySelectorAll(".seg button"),function(b){
+  b.addEventListener("click",function(){
+    [].forEach.call(document.querySelectorAll(".seg button"),function(x){x.setAttribute("aria-selected","false");});
+    b.setAttribute("aria-selected","true");
+    current=b.dataset.set;
+    drawChart();
   });
 });
+document.getElementById("tbl-btn").addEventListener("click",function(){
+  var t=document.getElementById("tbl"), open=t.hidden;
+  t.hidden=!open;
+  this.setAttribute("aria-expanded",String(open));
+  this.textContent=open?"Hide table":"View as table";
+});
 
-/* ---------------------- the air box (hero illustration) ---------------------- */
-(function(){
-  var box=document.getElementById("airbox"),cv=document.getElementById("air"),
-      btn=document.getElementById("fanbtn"),hudS=document.getElementById("hud-state"),
-      hudC=document.getElementById("hud-count");
-  if(!cv) return;
-  var ctx=cv.getContext("2d"),W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),parts=[],on=false,target=170,shown=170;
-
-  function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
-  function size(){
-    var r=cv.getBoundingClientRect();W=r.width;H=r.height;
-    cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
+/* ------------------------------- AQI scale ------------------------------- */
+var AQI=[
+  {c:"#00E400", n:"Good",           r:"0–50",    d:"Air quality is satisfactory, and air pollution poses little or no risk."},
+  {c:"#FFFF00", n:"Moderate",       r:"51–100",  d:"Acceptable for most people. A small number who are unusually sensitive may be affected."},
+  {c:"#FF7E00", n:"Unhealthy for Sensitive Groups", r:"101–150", d:"People with asthma and other sensitive groups may feel effects. The general public is less likely to be affected."},
+  {c:"#FF0000", n:"Unhealthy",      r:"151–200", d:"Some members of the general public may feel effects; sensitive groups may feel more serious ones."},
+  {c:"#8F3F97", n:"Very Unhealthy", r:"201–300", d:"Health alert — the risk of health effects is increased for everyone."},
+  {c:"#7E0023", n:"Hazardous",      r:"301+",    d:"Emergency conditions. Everyone is more likely to be affected."}
+];
+(function buildAqi(){
+  var wrap=document.getElementById("aqiscale"), out=document.getElementById("aqiout");
+  function pick(i){
+    [].forEach.call(wrap.children,function(b,j){b.setAttribute("aria-selected",String(j===i));});
+    var a=AQI[i];
+    out.innerHTML='<span class="chip" style="background:'+a.c+'"></span>'+
+      '<div><b>'+a.n+' <span style="font-family:IBM Plex Mono,monospace;font-weight:400;'+
+      'color:var(--muted);font-size:.8rem">AQI '+a.r+'</span></b>'+
+      '<span class="d">'+a.d+'</span></div>';
   }
-  function spawn(){
-    return {x:Math.random()*W,y:Math.random()*H,r:.75+Math.random()*2.05,
-            vx:(Math.random()-.5)*.24,vy:-.06-Math.random()*.16,a:.34+Math.random()*.52};
-  }
-  function seed(){parts=[];for(var i=0;i<220;i++)parts.push(spawn());}
-
-  function frame(){
-    var col=css("--clay-chart")||"#C0761F";
-    ctx.clearRect(0,0,W,H);
-    // how many particles are "in the room" right now
-    shown+=(target-shown)*0.045;
-    var n=Math.round(shown);
-    for(var i=0;i<n && i<parts.length;i++){
-      var p=parts[i];
-      p.x+=p.vx;p.y+=p.vy;
-      if(on){ p.y+=0.55; }               /* pulled down toward the filter */
-      if(p.y<-4){p.y=H+4;p.x=Math.random()*W;}
-      if(p.y>H+4){p.y=-4;p.x=Math.random()*W;}
-      if(p.x<-4)p.x=W+4; if(p.x>W+4)p.x=-4;
-      ctx.globalAlpha=p.a*(on?.75:1);
-      ctx.fillStyle=col;
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.2832);ctx.fill();
-    }
-    ctx.globalAlpha=1;
-    hudC.textContent=String(n).padStart(3,"0");
-    requestAnimationFrame(frame);
-  }
-
-  function setOn(v){
-    on=v;box.classList.toggle("on",v);
-    btn.setAttribute("aria-pressed",String(v));
-    btn.lastChild.nodeValue=v?" Filter running":" Turn on the filter";
-    hudS.textContent=v?"Filtered by the kit":"Unfiltered room air";
-    target=v?18:170;
-    if(REDUCED) shown=target;
-  }
-  btn.addEventListener("click",function(){setOn(!on);});
-
-  size();seed();
-  addEventListener("resize",function(){size();seed();});
-  if(REDUCED){
-    // static field, no animation loop
-    var draw=function(){var col=css("--clay-chart")||"#C0761F";ctx.clearRect(0,0,W,H);
-      for(var i=0;i<Math.round(shown)&&i<parts.length;i++){var p=parts[i];
-        ctx.globalAlpha=p.a;ctx.fillStyle=col;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.2832);ctx.fill();}
-      ctx.globalAlpha=1;hudC.textContent=String(Math.round(shown)).padStart(3,"0");};
-    draw();
-    btn.addEventListener("click",draw);
-  } else {
-    frame();
-  }
-})();
-
-/* ---------------------------- kit part explorer ---------------------------- */
-(function(){
-  var PARTS={
-    fan:{k:"The fan",h:"An ordinary box fan",
-      p:"It pulls room air through the filter surfaces instead of through open grilles, so air gets cleaned on its way in rather than just moved around."},
-    filters:{k:"The filters",h:"MERV-13, four of them",
-      p:"MERV-13 media is rated to catch fine particles — the size that travels deepest into the lungs. Cost is measured in a few dollars a filter, not a few hundred."},
-    why4:{k:"The design",h:"Why four and not one",
-      p:"Four surfaces mean air moves through slowly enough to actually be cleaned, without choking the fan. EPA testing found this kind of build can outperform some considerably more expensive commercial purifiers."}
-  };
-  var k=document.getElementById("kit-k"),h=document.getElementById("kit-h"),p=document.getElementById("kit-p");
-  var btns=[].slice.call(document.querySelectorAll(".partbtn"));
-  var hots=[].slice.call(document.querySelectorAll(".hot"));
-  function pick(id){
-    var d=PARTS[id]; if(!d) return;
-    k.textContent=d.k;h.textContent=d.h;p.textContent=d.p;
-    btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.part===id));});
-    hots.forEach(function(g){g.setAttribute("aria-pressed",String(g.dataset.part===id));});
-  }
-  btns.forEach(function(b){b.addEventListener("click",function(){pick(b.dataset.part);});});
-  hots.forEach(function(g){
-    g.addEventListener("click",function(){pick(g.dataset.part);});
-    g.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();pick(g.dataset.part);}});
+  AQI.forEach(function(a,i){
+    var b=document.createElement("button");
+    b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected","false");
+    b.setAttribute("aria-label",a.n+", AQI "+a.r);
+    b.innerHTML='<span class="bar" style="background:'+a.c+'"></span><span class="rng">'+a.r+'</span>';
+    b.addEventListener("click",function(){pick(i);});
+    b.addEventListener("mouseenter",function(){pick(i);});
+    wrap.appendChild(b);
   });
+  pick(2);   /* opens on the band that matters most to people with asthma */
 })();
 
 show(route(),false);
