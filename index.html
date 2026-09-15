@@ -3,17 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#F5F1EA" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#12212E" media="(prefers-color-scheme: dark)">
-<meta name="description" content="Project Air Aware is a student-led asthma and air quality awareness campaign from Mountain House High School in Mountain House, California — local data, DIY air filter kits, and a community survey.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#12212E">
+<meta name="description" content="Project Air Aware is a student-led asthma and air quality awareness campaign from Mountain House High School in Mountain House, California — local data, a community survey, and school trigger education.">
 <link rel="canonical" href="https://ashrithgannamaneni123.github.io/projectairaware/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Project Air Aware">
 <meta property="og:title" content="Project Air Aware">
-<meta property="og:description" content="Project Air Aware is a student-led asthma and air quality awareness campaign from Mountain House High School in Mountain House, California — local data, DIY air filter kits, and a community survey.">
+<meta property="og:description" content="Project Air Aware is a student-led asthma and air quality awareness campaign from Mountain House High School in Mountain House, California — local data, a community survey, and school trigger education.">
 <meta property="og:url" content="https://ashrithgannamaneni123.github.io/projectairaware/">
 <meta property="og:image" content="https://ashrithgannamaneni123.github.io/projectairaware/og.png">
 <meta property="og:image:width" content="1200">
@@ -21,7 +20,7 @@
 <meta property="og:image:alt" content="Project Air Aware — 28.4% of San Joaquin County children have been diagnosed with asthma, versus 17.1% statewide.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Project Air Aware">
-<meta name="twitter:description" content="Project Air Aware is a student-led asthma and air quality awareness campaign from Mountain House High School in Mountain House, California — local data, DIY air filter kits, and a community survey.">
+<meta name="twitter:description" content="Project Air Aware is a student-led asthma and air quality awareness campaign from Mountain House High School in Mountain House, California — local data, a community survey, and school trigger education.">
 <meta name="twitter:image" content="https://ashrithgannamaneni123.github.io/projectairaware/og.png">
 <title>Project Air Aware</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,44 +29,24 @@
 <style>
 /* ============================================================
    PROJECT AIR AWARE
-   navy ink · steel blue = brand · gold = the elevated figure
-   sage = prevention · sky + ice = air · cream ground
+   deep navy ground · steel blue = brand · gold = the elevated figure
+   sage = prevention · sky = air · ONE fixed theme on every device
    Archivo (headings) / Newsreader (body) / IBM Plex Mono (readouts)
    ============================================================ */
 
 :root{
-  --ground:#F5F1EA; --surface:#FCFAF7; --surface-2:#E7EEF1;
-  --ink:#16304C; --ink-2:#3D5568; --muted:#6E7F8C;
-  --line:#DED6C9; --line-soft:#E9E2D7;
-  --blue:#2A6B92; --blue-deep:#1C4F70; --on-blue:#FDFCFA;
-  --sky:#85CBE8; --ice:#D8EBF0; --sage:#7CAB8C;
-  --chart-a:#1B6098;          /* San Joaquin County — the elevated figure */
-  --chart-b:#B0851F;          /* California — the baseline */
-  --focus:#2A6B92;
-  --shadow:0 1px 2px rgba(22,48,76,.05), 0 10px 28px -18px rgba(22,48,76,.30);
-  --measure:62ch; --pad:clamp(1.15rem,4vw,2.5rem); --radius:12px;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ground:#12212E; --surface:#1A2E3D; --surface-2:#24394A;
-    --ink:#EDF2F4; --ink-2:#C2D2DB; --muted:#8FA3B0;
-    --line:#2E4557; --line-soft:#223749;
-    --blue:#6FB3DA; --blue-deep:#8FC8E6; --on-blue:#0C1A25;
-    --sky:#85CBE8; --ice:#2A4256; --sage:#8FBFA0;
-    --chart-a:#4C9BD1; --chart-b:#B08A2C;
-    --focus:#6FB3DA;
-    --shadow:0 1px 2px rgba(0,0,0,.32), 0 12px 30px -20px rgba(0,0,0,.85);
-  }
-}
-:root[data-theme="dark"]{
+  /* Locked to one look on every device — no light/dark switching. */
+  color-scheme:dark;
   --ground:#12212E; --surface:#1A2E3D; --surface-2:#24394A;
   --ink:#EDF2F4; --ink-2:#C2D2DB; --muted:#8FA3B0;
   --line:#2E4557; --line-soft:#223749;
   --blue:#6FB3DA; --blue-deep:#8FC8E6; --on-blue:#0C1A25;
   --sky:#85CBE8; --ice:#2A4256; --sage:#8FBFA0;
-  --chart-a:#4C9BD1; --chart-b:#B08A2C;
+  --chart-a:#4C9BD1;          /* San Joaquin County — the elevated figure */
+  --chart-b:#B08A2C;          /* California — the baseline */
   --focus:#6FB3DA;
   --shadow:0 1px 2px rgba(0,0,0,.32), 0 12px 30px -20px rgba(0,0,0,.85);
+  --measure:62ch; --pad:clamp(1.15rem,4vw,2.5rem); --radius:12px;
 }
 
 *{box-sizing:border-box}
