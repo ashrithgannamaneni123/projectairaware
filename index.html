@@ -1011,5 +1011,45 @@ show(route(),false);
   document.head.appendChild(s);
 })();
 </script>
+
+<!-- =====================================================================
+     VERCEL WEB ANALYTICS  —  dashboard: vercel.com -> projectairaware -> Analytics
+
+     Runs only on addresses Vercel serves (projectairaware.vercel.app, and a
+     custom domain later). It is skipped on GitHub Pages, where Vercel's
+     /_vercel/insights path doesn't exist.
+
+     The site switches tabs with #/links, which Vercel can't see on its own,
+     so automatic tracking is turned off and each tab is sent as its own page
+     (/home, /problem, ...) — one view per tab visit, same as GoatCounter.
+
+     Free-plan limits: page views only (no survey-click events) and one month
+     of history. GoatCounter above keeps the long-term record and survey clicks.
+     ===================================================================== -->
+<script>
+(function(){
+  "use strict";
+  var h = location.hostname;
+  if (location.protocol === "file:" || /github\.io$/.test(h) || h === "localhost") { return; }
+
+  window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };
+
+  var TABS = {home:1, problem:1, involved:1, milestones:1, about:1, resources:1};
+  function send(){
+    var r = (location.hash || "").replace(/^#\/?/, "").split("?")[0];
+    if (!TABS.hasOwnProperty(r)) { r = "home"; }
+    window.va("pageview", {route: "/" + r, path: "/" + r});
+  }
+
+  var s = document.createElement("script");
+  s.defer = true;
+  s.src = "/_vercel/insights/script.js";
+  s.setAttribute("data-disable-auto-track", "1");
+  document.head.appendChild(s);
+
+  send();                                   /* queued until the script arrives */
+  addEventListener("hashchange", send);
+})();
+</script>
 </body>
 </html>
